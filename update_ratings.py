@@ -1,23 +1,32 @@
 #!/usr/bin/env python3
 """
-update_ratings.py — fill real IMDb ratings into index.html
+update_ratings.py — fill real IMDb ratings and poster plates into index.html
 
 Downloads IMDb's own published dataset (https://developer.imdb.com/non-commercial-datasets/)
 and writes an `r:` value into every entry in the PARTS array.
 
+If TMDB_API_KEY is set, it also fetches a poster thumbnail for every title it
+resolved and rewrites the POSTERS block as inline data URIs — IMDb's datasets
+carry no images, so posters come from TMDb, matched on the IMDb id. Without the
+key the ratings pass runs exactly as before and the POSTERS block is left alone.
+
     python3 update_ratings.py
 
-No third-party packages needed. First run downloads ~190 MB and takes a few
-minutes; the files are cached in ./.imdb-cache so later runs are quick.
-Safe to run repeatedly — existing ratings are replaced, not duplicated.
+No third-party packages needed — TMDb's w92 renditions are already thumbnail
+sized, so nothing has to be resized locally. First run downloads ~190 MB and
+takes a few minutes; the files are cached in ./.imdb-cache so later runs are
+quick. Safe to run repeatedly — ratings and posters are replaced, not duplicated.
 """
 
+import base64
 import csv
 import gzip
 import io
+import json
 import os
 import re
 import sys
+import time
 import unicodedata
 import urllib.parse
 import urllib.request
@@ -111,6 +120,74 @@ def candidates_for(idx, title, year):
     return out
 
 
+TMDB_KEY = os.environ.get("TMDB_API_KEY", "").strip()
+TMDB_FIND = "https://api.themoviedb.org/3/find/{}?external_source=imdb_id&api_key={}"
+TMDB_IMG = "https://image.tmdb.org/t/p/w92{}"
+POSTER_CACHE = os.path.join(CACHE, "posters")
+
+
+def poster_bytes(tconst):
+    """w92 JPEG for an IMDb id, or None. Cached on disk, misses included."""
+    os.makedirs(POSTER_CACHE, exist_ok=True)
+    hit = os.path.join(POSTER_CACHE, tconst + ".jpg")
+    miss = os.path.join(POSTER_CACHE, tconst + ".none")
+    if os.path.exists(hit):
+        return open(hit, "rb").read()
+    if os.path.exists(miss):
+        return None
+
+    try:
+        with urllib.request.urlopen(TMDB_FIND.format(tconst, TMDB_KEY), timeout=30) as r:
+            found = json.load(r)
+    except Exception as e:
+        print(f"    TMDb lookup failed for {tconst}: {e}", flush=True)
+        return None
+    time.sleep(0.06)  # stay well inside TMDb's rate limit
+
+    path = None
+    for bucket in ("movie_results", "tv_results"):
+        for row in found.get(bucket) or []:
+            if row.get("poster_path"):
+                path = row["poster_path"]
+                break
+        if path:
+            break
+    if not path:
+        open(miss, "wb").close()
+        return None
+
+    try:
+        with urllib.request.urlopen(TMDB_IMG.format(path), timeout=30) as r:
+            data = r.read()
+    except Exception as e:
+        print(f"    poster download failed for {tconst}: {e}", flush=True)
+        return None
+    with open(hit, "wb") as fh:
+        fh.write(data)
+    return data
+
+
+def write_posters(text, resolved):
+    """Replace the POSTERS block with data URIs for everything we resolved."""
+    print(f"\nFetching posters for {len(resolved)} titles …", flush=True)
+    rows, got, total = [], 0, 0
+    for title, year, tconst in resolved:
+        data = poster_bytes(tconst)
+        if not data:
+            continue
+        got += 1
+        total += len(data)
+        uri = "data:image/jpeg;base64," + base64.b64encode(data).decode("ascii")
+        rows.append("  %s: %s," % (json.dumps(f"{title}|{year}"), json.dumps(uri)))
+
+    block = "const POSTERS = {\n" + "\n".join(rows) + "\n};"
+    new, n = re.subn(r"const POSTERS = \{.*?\};", lambda _: block, text, count=1, flags=re.S)
+    if n != 1:
+        sys.exit("Could not find the POSTERS block in index.html")
+    print(f"Posters written: {got} of {len(resolved)}   ·   {total / 1024:.0f} KB of image data")
+    return new
+
+
 ENTRY = re.compile(r'^\s*\{t:"')
 FIELD = re.compile(r'(\w+):"((?:[^"\\]|\\.)*)"')
 
@@ -124,6 +201,7 @@ def main():
     lines = open(HTML, encoding="utf-8").read().split("\n")
     matched = missed = 0
     unresolved = []
+    resolved = []      # (title, year, tconst) — feeds the poster pass
 
     for i, line in enumerate(lines):
         if not ENTRY.match(line):
@@ -145,20 +223,26 @@ def main():
             if not cands and fields.get("o"):
                 cands = candidates_for(idx, fields["o"], year)
 
-        scored = [(ratings[t][1], ratings[t][0]) for t in cands if t in ratings]
+        scored = [(ratings[t][1], ratings[t][0], t) for t in cands if t in ratings]
         if scored:
-            scored.sort(reverse=True)  # most-voted title wins
-            rating = scored[0][1]
+            scored.sort(key=lambda s: s[0], reverse=True)  # most-voted title wins
+            rating, tconst = scored[0][1], scored[0][2]
             lines[i] = line.replace(
                 f'g:"{fields["g"]}"', f'g:"{fields["g"]}",r:{rating:.1f}', 1
             )
+            resolved.append((title, year, tconst))
             matched += 1
         else:
             missed += 1
             q = urllib.parse.quote_plus(f"{title} {year}")
             unresolved.append(f"{title} ({year})\n      https://www.imdb.com/find/?q={q}")
 
-    open(HTML, "w", encoding="utf-8").write("\n".join(lines))
+    text = "\n".join(lines)
+    if TMDB_KEY:
+        text = write_posters(text, resolved)
+    else:
+        print("\nTMDB_API_KEY not set — skipping posters, POSTERS block left as it is.")
+    open(HTML, "w", encoding="utf-8").write(text)
 
     total = matched + missed
     print(f"\nRatings written: {matched} of {total}   ·   unmatched: {missed}")

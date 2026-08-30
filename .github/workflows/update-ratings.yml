@@ -1,7 +1,10 @@
-name: Update IMDb ratings
+name: Update IMDb ratings and posters
 
-# Fills real IMDb ratings into index.html. Runs on the first push, on demand,
-# and monthly so the figures don't go stale.
+# Fills real IMDb ratings and poster plates into index.html. Runs on the first
+# push, on demand, and monthly so the figures don't go stale.
+#
+# Posters need the TMDB_API_KEY repository secret (IMDb's datasets carry no
+# images). Without it the ratings pass still runs and posters are left alone.
 #
 # The commit this makes uses GITHUB_TOKEN, and pushes made with that token do
 # not trigger workflows — so this cannot loop.
@@ -30,17 +33,19 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Fetch ratings and rewrite index.html
+      - name: Fetch ratings and posters, rewrite index.html
+        env:
+          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
         run: python3 update_ratings.py
 
       - name: Commit if anything changed
         run: |
           if git diff --quiet -- index.html; then
-            echo "Ratings unchanged — nothing to commit."
+            echo "Nothing changed — nothing to commit."
             exit 0
           fi
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add index.html
-          git commit -m "Refresh IMDb ratings"
+          git commit -m "Refresh IMDb ratings and poster plates"
           git push
