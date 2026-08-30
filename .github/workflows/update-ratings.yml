@@ -1,0 +1,46 @@
+name: Update IMDb ratings
+
+# Fills real IMDb ratings into index.html. Runs on the first push, on demand,
+# and monthly so the figures don't go stale.
+#
+# The commit this makes uses GITHUB_TOKEN, and pushes made with that token do
+# not trigger workflows — so this cannot loop.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+    - cron: "0 4 1 * *"   # 04:00 UTC on the 1st of each month
+
+permissions:
+  contents: write
+
+concurrency:
+  group: imdb-ratings
+  cancel-in-progress: false
+
+jobs:
+  ratings:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Fetch ratings and rewrite index.html
+        run: python3 update_ratings.py
+
+      - name: Commit if anything changed
+        run: |
+          if git diff --quiet -- index.html; then
+            echo "Ratings unchanged — nothing to commit."
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Refresh IMDb ratings"
+          git push

@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>W.D. FILE CIN/39-45 — Screen Records of the Late War</title>
+<meta name="description" content="A graded index of 212 Second World War films, series and documentaries, arranged by the period of history they depict rather than the year of release. Includes Soviet, German, Japanese, Polish, French and Italian cinema.">
+<meta name="theme-color" content="#ded2b6">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Screen Records of the Late War, 1931–1949">
+<meta property="og:description" content="212 WW2 films, series and documentaries in historical sequence, graded and annotated — with the international cinema most English-language lists leave out.">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23ded2b6'/%3E%3Cg transform='rotate(-9 16 16)'%3E%3Crect x='3.5' y='10.5' width='25' height='11' fill='none' stroke='%238f241b' stroke-width='2.5'/%3E%3Crect x='7' y='14.5' width='18' height='3' fill='%238f241b'/%3E%3C/g%3E%3C/svg%3E">
+<style>
+:root{
+  --desk:#1b1813;
+  --paper:#ded2b6;
+  --paper2:#e7ddc6;
+  --ink:#241f18;
+  --ink2:#574d3c;
+  --ink3:#7f745d;
+  --rule:#a99878;
+  --rule-soft:#c0b193;
+  --red:#8f241b;
+  --blue:#1d4054;
+  --green:#3d5334;
+  --mono:"Courier New","Nimbus Mono PS",Courier,monospace;
+  --stamp:Impact,Haettenschweiler,"Franklin Gothic Bold","Arial Narrow",sans-serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--desk);
+  background-image:
+    radial-gradient(ellipse at 50% 0%,rgba(120,100,70,.14),transparent 60%),
+    repeating-linear-gradient(96deg,rgba(0,0,0,.14) 0 2px,transparent 2px 7px);
+  font-family:var(--mono);
+  color:var(--ink);
+  padding:28px 14px 70px;
+  line-height:1.6;
+}
+
+/* ---------- the sheet ---------- */
+.sheet{
+  max-width:1140px;margin:0 auto;position:relative;
+  background:var(--paper);
+  background-image:
+    radial-gradient(circle at 12% 22%,rgba(150,120,70,.16),transparent 26%),
+    radial-gradient(circle at 88% 68%,rgba(140,110,60,.14),transparent 30%),
+    radial-gradient(circle at 62% 96%,rgba(120,95,55,.12),transparent 22%),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/><feColorMatrix type='saturate' values='0'/></filter><rect width='180' height='180' filter='url(%23n)' opacity='0.22'/></svg>");
+  box-shadow:0 2px 0 rgba(0,0,0,.4),0 18px 50px rgba(0,0,0,.6);
+  padding:0 34px 34px 62px;
+  overflow:hidden;
+}
+/* punched filing holes */
+.sheet::before{
+  content:"";position:absolute;left:22px;top:0;bottom:0;width:18px;
+  background-image:radial-gradient(circle at 9px 165px,
+    var(--desk) 0 7px, rgba(90,72,42,.55) 7px 8.5px, transparent 8.5px);
+  background-size:18px 300px;background-repeat:repeat-y;
+  pointer-events:none;
+}
+/* red margin rule, as on service stationery */
+.sheet::after{
+  content:"";position:absolute;left:52px;top:0;bottom:0;width:1px;
+  background:rgba(143,36,27,.28);pointer-events:none;
+}
+
+/* ---------- classification banners ---------- */
+.class-bar{
+  text-align:center;font-family:var(--stamp);font-size:clamp(15px,2.6vw,21px);
+  letter-spacing:.5em;text-indent:.5em;color:var(--red);
+  border-top:3px double var(--red);border-bottom:3px double var(--red);
+  padding:7px 0;margin:0 -34px 0 -62px;
+}
+.class-bar.top{margin-bottom:0}
+.class-bar.bottom{margin-top:30px}
+.class-sub{
+  text-align:center;font-size:10px;letter-spacing:.28em;color:var(--ink3);
+  padding:6px 0 0;text-transform:uppercase;
+}
+
+/* ---------- masthead ---------- */
+.masthead{position:relative;padding:22px 0 16px;border-bottom:1px solid var(--rule)}
+.crest{font-size:10px;letter-spacing:.3em;color:var(--ink2);text-transform:uppercase}
+h1{
+  font-family:var(--stamp);font-weight:400;
+  font-size:clamp(26px,5.4vw,50px);line-height:.98;letter-spacing:.03em;
+  margin:10px 0 6px;text-transform:uppercase;
+}
+.subtitle{font-size:13px;color:var(--ink2);max-width:56ch;margin:0}
+
+/* rubber stamp */
+.stamp{
+  position:absolute;right:8px;top:16px;
+  font-family:var(--stamp);color:var(--red);
+  border:3px solid var(--red);border-radius:3px;
+  padding:6px 14px 8px;text-align:center;
+  transform:rotate(-9deg);opacity:.82;
+  mix-blend-mode:multiply;
+  box-shadow:inset 0 0 0 1px rgba(143,36,27,.4);
+  animation:thump .5s cubic-bezier(.2,1.5,.4,1) both;
+}
+.stamp b{display:block;font-size:clamp(16px,3vw,25px);letter-spacing:.14em;font-weight:400}
+.stamp span{display:block;font-family:var(--mono);font-size:9px;letter-spacing:.2em;margin-top:2px}
+@keyframes thump{from{transform:rotate(-9deg) scale(2.4);opacity:0}to{transform:rotate(-9deg) scale(1);opacity:.82}}
+
+/* ---------- registry block ---------- */
+.registry{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));
+  gap:2px 26px;font-size:12px;padding:16px 0;border-bottom:1px solid var(--rule);
+}
+.reg-k{color:var(--ink3);letter-spacing:.14em;font-size:10px;text-transform:uppercase}
+.reg-v{color:var(--ink);margin-bottom:8px}
+.redact{
+  background:var(--ink);color:transparent;padding:0 5px;cursor:help;
+  border-radius:1px;white-space:nowrap;transition:background .18s,color .18s;
+}
+.redact:hover,.redact:focus{background:transparent;color:var(--red);outline:none}
+
+/* ---------- key panel ---------- */
+.key{
+  border:1px solid var(--rule);background:rgba(255,252,240,.35);
+  padding:14px 16px;margin:20px 0;font-size:12px;
+}
+.key h2{
+  font-family:var(--stamp);font-weight:400;font-size:14px;letter-spacing:.2em;
+  margin:0 0 10px;text-transform:uppercase;color:var(--ink2);
+}
+.key-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(238px,1fr));gap:4px 22px}
+.key-row{display:flex;gap:9px;align-items:baseline}
+.gr{
+  font-family:var(--stamp);font-size:12px;letter-spacing:.08em;
+  border:1.5px solid currentColor;padding:0 5px;line-height:1.35;flex:0 0 auto;
+}
+.gr.a1{color:var(--red)} .gr.a2{color:var(--blue)}
+.gr.b1{color:var(--green)} .gr.b2{color:var(--ink2)} .gr.c3{color:var(--ink3)}
+.key-note{margin:11px 0 0;color:var(--ink2);font-size:11px;line-height:1.55}
+
+/* ---------- controls ---------- */
+.controls{
+  display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;
+  padding:14px 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+  margin-bottom:6px;background:var(--paper);
+}
+.ctrl-group{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.ctrl-label{font-size:10px;letter-spacing:.16em;color:var(--ink3);text-transform:uppercase;margin-right:2px}
+.chk{
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;
+  background:none;border:1px solid transparent;color:var(--ink2);
+  padding:3px 7px;cursor:pointer;border-radius:2px;
+}
+.chk:hover{border-color:var(--rule-soft);color:var(--ink)}
+.chk[aria-pressed="true"]{color:var(--red);border-color:var(--red);background:rgba(143,36,27,.07)}
+.chk:focus-visible{outline:2px solid var(--blue);outline-offset:1px}
+#q{
+  font-family:var(--mono);font-size:12.5px;color:var(--ink);
+  background:rgba(255,253,244,.5);border:1px solid var(--rule);
+  padding:5px 9px;width:min(250px,54vw);border-radius:2px;
+}
+#q:focus{outline:2px solid var(--blue);outline-offset:0}
+#q::placeholder{color:var(--ink3)}
+#minRate{
+  font-family:var(--mono);font-size:12.5px;color:var(--ink);
+  background:rgba(255,253,244,.5);border:1px solid var(--rule);
+  padding:5px 6px;width:64px;border-radius:2px;
+}
+#minRate:focus{outline:2px solid var(--blue);outline-offset:0}
+#minRate:disabled{opacity:.45;cursor:not-allowed}
+#minRate::placeholder{color:var(--ink3)}
+.hint{font-size:10px;letter-spacing:.1em;color:var(--ink3);text-transform:uppercase}
+.tally{margin-left:auto;font-size:10.5px;letter-spacing:.14em;color:var(--ink3);text-transform:uppercase}
+
+/* ---------- parts & entries ---------- */
+.part{margin-top:34px}
+.part-head{border-bottom:2px solid var(--ink);padding-bottom:6px;margin-bottom:4px}
+.part-no{font-size:10px;letter-spacing:.3em;color:var(--red);text-transform:uppercase}
+.part-title{
+  font-family:var(--stamp);font-weight:400;font-size:clamp(17px,3vw,25px);
+  letter-spacing:.06em;margin:3px 0 0;text-transform:uppercase;
+}
+.part-ctx{font-size:11.5px;color:var(--ink2);margin:5px 0 0;max-width:78ch}
+.part-body{padding-top:8px}
+
+.entry{
+  display:grid;grid-template-columns:44px 1fr;gap:0 12px;
+  padding:7px 6px 7px 0;border-bottom:1px dotted var(--rule-soft);
+  align-items:start;
+}
+.entry:hover{background:rgba(255,250,235,.42)}
+/* the hidden attribute must beat .entry{display:grid} and .part display */
+.entry[hidden],.part[hidden],.empty[hidden]{display:none!important}
+.e-grade{padding-top:2px}
+.e-main a{
+  color:var(--ink);text-decoration:none;font-weight:700;
+  letter-spacing:.02em;border-bottom:1px solid rgba(36,31,24,.3);
+}
+.e-main a:hover{color:var(--red);border-bottom-color:var(--red)}
+.e-main a:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.e-orig{font-style:italic;color:var(--ink2);font-weight:400}
+.e-meta{font-size:11px;color:var(--ink3);letter-spacing:.08em;white-space:nowrap}
+.e-rate{color:var(--blue);font-weight:700;letter-spacing:.04em}
+.e-rate::after{content:"/10";font-weight:400;color:var(--ink3)}
+.e-note{font-size:12px;color:var(--ink2);margin-top:1px;line-height:1.5}
+.tag{
+  font-size:9px;letter-spacing:.14em;border:1px solid var(--rule);
+  padding:0 4px;color:var(--ink2);text-transform:uppercase;
+}
+.tag.serial{border-color:var(--blue);color:var(--blue)}
+.tag.doc{border-color:var(--green);color:var(--green)}
+.caveat{
+  display:inline-block;font-size:9px;letter-spacing:.14em;color:var(--red);
+  border:1px dashed var(--red);padding:0 4px;text-transform:uppercase;margin-right:5px;
+}
+.e-caveat{font-size:11.5px;color:var(--red);margin-top:2px;line-height:1.45}
+
+.empty{padding:26px 0;color:var(--ink2);font-size:13px}
+
+/* ---------- footer ---------- */
+.endmatter{margin-top:34px;border-top:1px solid var(--rule);padding-top:16px;font-size:11.5px;color:var(--ink2)}
+.endmatter h3{font-family:var(--stamp);font-weight:400;font-size:13px;letter-spacing:.2em;margin:0 0 8px;text-transform:uppercase;color:var(--ink2)}
+.endmatter ul{margin:0;padding-left:18px}
+.endmatter li{margin-bottom:5px}
+.sig{margin-top:20px;display:flex;flex-wrap:wrap;gap:8px 34px;align-items:flex-end;font-size:11px;color:var(--ink3)}
+.sig-line{border-top:1px solid var(--ink3);padding-top:3px;min-width:190px;letter-spacing:.12em}
+
+@media (max-width:640px){
+  body{padding:12px 6px 40px}
+  .sheet{padding:0 16px 24px 40px}
+  .sheet::before{left:12px}
+  .sheet::after{left:30px}
+  .class-bar{margin:0 -16px 0 -40px;letter-spacing:.3em}
+  .stamp{position:static;display:inline-block;margin:6px 0 16px;transform:rotate(-3deg)}
+  .brk{display:none}
+  @keyframes thump{from{transform:rotate(-3deg) scale(2);opacity:0}to{transform:rotate(-3deg) scale(1);opacity:.82}}
+  .entry{grid-template-columns:38px 1fr;gap:0 8px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+}
+@media print{
+  body{background:#fff;padding:0}
+  .sheet{box-shadow:none;max-width:none}
+  .controls{display:none}
+  .entry{break-inside:avoid}
+  .part{break-inside:auto}
+}
+</style>
+</head>
+<body>
+<main class="sheet">
+
+  <div class="class-bar top">MOST SECRET</div>
+  <p class="class-sub">This document is the property of H.M. Government · Registry copy · Not to be taken from the building</p>
+
+  <header class="masthead">
+    <div class="stamp" aria-label="Declassified">
+      <b>DECLASSIFIED</b>
+      <span>AUTH. WD/7734 · 30 AUG 26</span>
+    </div>
+    <div class="crest">War Department · Directorate of Cinematic Intelligence</div>
+    <h1>Screen Records of the<br class="brk"> Late War, 1931–1949</h1>
+    <p class="subtitle">A graded index of motion pictures, serials and factual films, arranged by the period of history they depict rather than the year of their release.</p>
+  </header>
+
+  <section class="registry" aria-label="File particulars">
+    <div>
+      <div class="reg-k">File reference</div>
+      <div class="reg-v">WD/CIN/39-45 · SHEET 1 · REV E</div>
+      <div class="reg-k">Originator</div>
+      <div class="reg-v">D.C.I. (Assessments Section)</div>
+    </div>
+    <div>
+      <div class="reg-k">Subject</div>
+      <div class="reg-v">Viewing order, all theatres</div>
+      <div class="reg-k">Date of issue</div>
+      <div class="reg-v">30 August 1946 · rev. 2026</div>
+    </div>
+    <div>
+      <div class="reg-k">Copy number</div>
+      <div class="reg-v">4 of 12</div>
+      <div class="reg-k">Distribution</div>
+      <div class="reg-v">C.-in-C. Home Forces · Air Ministry · <span class="redact" tabindex="0" title="Hover to reveal">Hut 8, Bletchley Park</span></div>
+    </div>
+  </section>
+
+  <section class="key">
+    <h2>Key to gradings</h2>
+    <div class="key-grid">
+      <div class="key-row"><span class="gr a1">A1</span><span>Essential. Watch this one even if you watch nothing else in the part.</span></div>
+      <div class="key-row"><span class="gr a2">A2</span><span>Strongly recommended. Sound history, or great filmmaking, usually both.</span></div>
+      <div class="key-row"><span class="gr b1">B1</span><span>Very good, with some dramatic licence taken knowingly.</span></div>
+      <div class="key-row"><span class="gr b2">B2</span><span>Worth your evening. Treat the detail loosely.</span></div>
+      <div class="key-row"><span class="gr c3">C3</span><span>Entertainment first. Enjoyable, but do not learn your history here.</span></div>
+    </div>
+    <p class="key-note">
+      Gradings follow the Admiralty pattern — a letter for the reliability of the source, a figure for the credibility of the report. Origin is given by country code: <b>GB</b> Britain · <b>US</b> United States · <b>SU</b> Soviet Union · <b>RU</b> Russia · <b>DE</b> Germany · <b>JP</b> Japan · <b>PL</b> Poland · <b>FR</b> France · <b>IT</b> Italy · <b>CZ</b> Czechoslovakia · <b>HU</b> Hungary · <b>DK</b> Denmark · <b>NO</b> Norway · <b>FI</b> Finland · <b>NL</b> Netherlands · <b>CN</b> China · <b>YU</b> Yugoslavia · <b>AU</b> Australia · <b>NZ</b> New Zealand · <b>CA</b> Canada. Every title links to its IMDb entry.
+    </p>
+  </section>
+
+  <nav class="controls" aria-label="Filter the index">
+    <div class="ctrl-group" role="group" aria-label="Filter by form">
+      <span class="ctrl-label">Form</span>
+      <button class="chk" data-group="kind" data-val="all" aria-pressed="true">All</button>
+      <button class="chk" data-group="kind" data-val="F" aria-pressed="false">Films</button>
+      <button class="chk" data-group="kind" data-val="S" aria-pressed="false">Serials</button>
+      <button class="chk" data-group="kind" data-val="D" aria-pressed="false">Factual</button>
+    </div>
+    <div class="ctrl-group" role="group" aria-label="Filter by language" id="langGroup">
+      <span class="ctrl-label">Tongue</span>
+      <button class="chk" data-langall="1" aria-pressed="true">All</button>
+      <span id="langButtons"></span>
+    </div>
+    <div class="ctrl-group" role="group" aria-label="Filter by year of release">
+      <span class="ctrl-label">Made</span>
+      <button class="chk" data-group="year" data-val="all" aria-pressed="true">Any</button>
+      <button class="chk" data-group="year" data-val="1950" aria-pressed="false">1950+</button>
+      <button class="chk" data-group="year" data-val="1960" aria-pressed="false">1960+</button>
+      <button class="chk" data-group="year" data-val="1970" aria-pressed="false">1970+</button>
+      <button class="chk" data-group="year" data-val="1980" aria-pressed="false">1980+</button>
+      <button class="chk" data-group="year" data-val="1990" aria-pressed="false">1990+</button>
+      <button class="chk" data-group="year" data-val="2000" aria-pressed="false">2000+</button>
+    </div>
+    <div class="ctrl-group">
+      <span class="ctrl-label">IMDb above</span>
+      <input id="minRate" type="number" min="0" max="10" step="0.1" placeholder="5"
+             aria-label="Show only titles rated above this IMDb score" inputmode="decimal">
+      <button class="chk" id="clearRate" hidden>Clear</button>
+      <span class="hint" id="rateHint" hidden>run update_ratings.py to enable</span>
+    </div>
+    <div class="ctrl-group">
+      <span class="ctrl-label">Search</span>
+      <input id="q" type="search" placeholder="title, place, subject…" aria-label="Search the index">
+    </div>
+    <div class="tally" id="tally" aria-live="polite"></div>
+  </nav>
+
+  <div id="index"></div>
+
+  <section class="endmatter">
+    <h3>Remarks by the assessing officer</h3>
+    <ul>
+      <li><b>On sequence.</b> Titles sit under the period they portray, not the year they were made. A 1957 picture about 1944 is filed under 1944. Where a work runs the length of the war it is placed in Part X.</li>
+      <li><b>On the Eastern Front.</b> Roughly four in five German soldiers who died in this war died fighting the Soviets. Anglo-American cinema barely registers this. Parts IV to VIII are weighted accordingly — <i>Come and See</i>, <i>The Ascent</i> and <i>Ivan's Childhood</i> are the corrective.</li>
+      <li><b>On the enemy's own films.</b> The German and Japanese entries here are post-war reckonings, not wartime propaganda. <i>Die Brücke</i>, <i>Der Untergang</i> and <i>The Human Condition</i> are among the harshest films any nation has made about itself.</li>
+      <li><b>On the flagged entries.</b> A CAVEAT mark means the picture is enjoyable but materially misleads on a point of record. It is not a bar to watching — only to citing.</li>
+      <li><b>Suggested first six.</b> <i>Come and See</i> · <i>Das Boot</i> · <i>Grave of the Fireflies</i> · <i>Army of Shadows</i> · <i>Downfall</i> · <i>Band of Brothers</i>. Between them: the partisan war, the Atlantic, the firebombing of Japan, the Resistance, the collapse of the Reich, and the rifle company.</li>
+    </ul>
+    <div class="sig">
+      <div class="sig-line">Assessing officer</div>
+      <div class="sig-line">Countersigned, D.C.I.</div>
+      <div class="sig-line">Date</div>
+    </div>
+  </section>
+
+  <div class="class-bar bottom">MOST SECRET</div>
+  <p class="class-sub">End of document · Sheet <span id="sheetno">1</span> of 1 · Destroy by fire when superseded</p>
+
+</main>
+
+<script>
+/* Each entry: t title · o original title · y year · c country · k form (F/S/D)
+   g grade · n note · w caveat · l language (en / fl) */
+const PARTS = [
+{
+  no:"Part I", title:"Prelude · 1931–1939",
+  ctx:"Manchuria, Nanking, the Spanish rehearsal, Munich, Kristallnacht. The war in Asia is already two years old when Europe's begins.",
+  items:[
+    {t:"The Great Dictator",y:1940,c:"US",k:"F",g:"A2",lg:["English"],n:"Chaplin's Hynkel, released while Britain stood alone. He later said he could not have made it had he known what the camps were."},
+    {t:"Cabaret",y:1972,c:"US",k:"F",g:"A2",lg:["English"],n:"Berlin, 1931. The Nazis arrive as background noise, then as the room."},
+    {t:"City of Life and Death",o:"南京！南京！",y:2009,c:"CN",k:"F",g:"A1",lg:["Mandarin","Japanese"],n:"Nanking, December 1937, shot in stark black and white and partly from a Japanese soldier's point of view. Very hard going."},
+    {t:"The Eight Hundred",o:"八佰",y:2020,c:"CN",k:"F",g:"B1",lg:["Mandarin","Japanese"],n:"The Sihang Warehouse stand at Shanghai, 1937, fought in view of the foreign concessions across the creek."},
+    {t:"The Wind Rises",o:"風立ちぬ",y:2013,c:"JP",k:"F",g:"A2",lg:["Japanese"],n:"Miyazaki on Jiro Horikoshi, who designed the Zero. A film about loving the thing you build and not the use it is put to."},
+    {t:"The Garden of the Finzi-Continis",o:"Il giardino dei Finzi-Contini",y:1970,c:"IT",k:"F",g:"A2",lg:["Italian"],n:"Ferrara, 1938. An Italian Jewish family plays tennis behind its walls as the racial laws close in."},
+    {t:"Nowhere in Africa",o:"Nirgendwo in Afrika",y:2001,c:"DE",k:"F",g:"A2",lg:["German","Swahili"],n:"A German Jewish family gets out in 1938 and farms in Kenya. The war heard from very far away."},
+    {t:"Munich: The Edge of War",y:2021,c:"GB",k:"F",g:"B2",lg:["English","German"],n:"September 1938. A sympathetic revision of Chamberlain, hung on an invented spy plot.",w:"The two young diplomats and their document are fiction. The rehabilitation of Chamberlain is a live argument among historians, not a settled finding."},
+    {t:"Swing Kids",y:1993,c:"US",k:"F",g:"C3",lg:["English"],n:"Hamburg jazz youth versus the Hitler Youth. Earnest and simplified."},
+    {t:"Babylon Berlin",y:2017,c:"DE",k:"S",g:"B1",lg:["German"],n:"Weimar 1929 onward. Not a war series, but the best account of the ground the war grew out of."}
+  ]
+},
+{
+  no:"Part II", title:"September 1939 – June 1940 · Poland, Norway, the Fall of France",
+  ctx:"Poland is destroyed in five weeks and partitioned. The Phoney War. Finland holds off the Soviets in the snow. Then Norway, the Low Countries, Sedan, and the beaches at Dunkirk.",
+  items:[
+    {t:"Westerplatte",y:1967,c:"PL",k:"F",g:"B1",lg:["Polish","German"],n:"The Polish garrison at Danzig holds the first position attacked in the war, 1–7 September 1939."},
+    {t:"Lotna",y:1959,c:"PL",k:"F",g:"B1",lg:["Polish"],n:"Wajda's elegy for the Polish cavalry of September 1939, built around a white mare that outlives its riders."},
+    {t:"To Be or Not to Be",y:1942,c:"US",k:"F",g:"A2",lg:["English"],n:"Lubitsch's Warsaw theatre troupe versus the Gestapo. A comedy made while it was happening, and still startling."},
+    {t:"Katyń",y:2007,c:"PL",k:"F",g:"A1",lg:["Polish","Russian","German"],n:"The Soviet murder of some 22,000 Polish officers in spring 1940, and the forty-five years of official lying that followed. Wajda's father was among them."},
+    {t:"The Winter War",o:"Talvisota",y:1989,c:"FI",k:"F",g:"A1",lg:["Finnish"],n:"Finnish reservists in the snow, winter 1939–40. Unsentimental to the point of numbness."},
+    {t:"The King's Choice",o:"Kongens nei",y:2016,c:"NO",k:"F",g:"A2",lg:["Norwegian","German"],n:"Three days in April 1940 in which Haakon VII refuses to appoint Quisling and takes his country to war."},
+    {t:"The Battle of Oslo",o:"Kampen om Norge",y:2025,c:"NO",k:"F",g:"B2",lg:["Norwegian","German"],n:"Oscarsborg fortress sinks the cruiser Blücher in the Oslofjord, buying the royal family the hours it needed."},
+    {t:"Forbidden Games",o:"Jeux interdits",y:1952,c:"FR",k:"F",g:"A1",lg:["French"],n:"Two children build a graveyard for animals during the June 1940 exodus. Among the greatest films about what war does to the young."},
+    {t:"Dunkirk",y:2017,c:"GB",k:"F",g:"A1",lg:["English","French"],n:"Nolan's three interlocking clocks — mole, sea, air. Sensation rather than explanation, and superb at it."},
+    {t:"Dunkirk",y:1958,c:"GB",k:"F",g:"B1",lg:["English"],n:"The older, plainer telling, with the little ships given their due and John Mills in the sand."},
+    {t:"Atonement",y:2007,c:"GB",k:"F",g:"B1",lg:["English"],n:"For the five-minute unbroken shot along the Dunkirk beach, which is as good as the subject has ever looked."},
+    {t:"Weekend at Dunkirk",o:"Week-end à Zuydcoote",y:1964,c:"FR",k:"F",g:"B2",lg:["French","English"],n:"The same beaches from the French side, where the rescue looked a good deal less like deliverance."},
+    {t:"Le Silence de la mer",y:1949,c:"FR",k:"F",g:"A2",lg:["French","German"],n:"An old man and his niece billet a cultivated German officer and refuse to speak to him. Occupation as a war of silence."},
+    {t:"The Zookeeper's Wife",y:2017,c:"US",k:"F",g:"B2",lg:["English"],n:"The Żabińskis hide Jews in the emptied cages of Warsaw Zoo, 1939 onward."},
+    {t:"Piece of Cake",y:1988,c:"GB",k:"S",g:"B1",lg:["English"],n:"A fighter squadron from the Phoney War to the Battle of Britain, and pointedly not a heroic account."},
+    {t:"The Winds of War",y:1983,c:"US",k:"S",g:"B1",lg:["English"],n:"Wouk's sprawl from 1939 to Pearl Harbor. Dated, enormous, oddly compelling."}
+  ]
+},
+{
+  no:"Part III", title:"July 1940 – June 1941 · Britain Alone",
+  ctx:"The Battle of Britain, the Blitz, the Atlantic convoys, the Balkans and Crete, and the first desert winter. Britain and the Commonwealth fight without a major ally.",
+  items:[
+    {t:"The Life and Death of Colonel Blimp",y:1943,c:"GB",k:"F",g:"A1",lg:["English"],n:"Powell and Pressburger's forty-year friendship between a British officer and a German one. Churchill tried to have it stopped. He was wrong."},
+    {t:"Battle of Britain",y:1969,c:"GB",k:"F",g:"A2",lg:["English"],n:"Real Spitfires, real Buchóns, no computer anywhere. Still the definitive account of the summer of 1940."},
+    {t:"Darkest Hour",y:2017,c:"GB",k:"F",g:"B1",lg:["English"],n:"May 1940 in the Cabinet War Rooms, carried by Oldman.",w:"The Underground scene, in which Churchill canvasses ordinary passengers, is invented and rather traduces how the decision was actually taken."},
+    {t:"Went the Day Well?",y:1942,c:"GB",k:"F",g:"A2",lg:["English"],n:"German paratroopers seize an English village and the villagers turn savage. Made as a warning, and much nastier than expected."},
+    {t:"Mrs. Miniver",y:1942,c:"US",k:"F",g:"B1",lg:["English"],n:"Hollywood's plea to a still-neutral America. Propaganda, and it worked."},
+    {t:"49th Parallel",y:1941,c:"GB",k:"F",g:"A2",lg:["English"],n:"A stranded U-boat crew crosses Canada. Written to push the United States off the fence."},
+    {t:"Hope and Glory",y:1987,c:"GB",k:"F",g:"A2",lg:["English"],n:"Boorman's own Blitz childhood, in which the bombing is mainly a marvellous adventure."},
+    {t:"Their Finest",y:2016,c:"GB",k:"F",g:"B1",lg:["English"],n:"Making a morale picture about Dunkirk while the bombs fall on the studio."},
+    {t:"In Which We Serve",y:1942,c:"GB",k:"F",g:"A2",lg:["English"],n:"Coward and Lean on the sinking of a destroyer off Crete, told in flashback from the water."},
+    {t:"The Cruel Sea",y:1953,c:"GB",k:"F",g:"A1",lg:["English"],n:"Corvette escorts on the North Atlantic run. The moment the captain depth-charges his own men in the water is the war in one scene."},
+    {t:"Sink the Bismarck!",y:1960,c:"GB",k:"F",g:"B1",lg:["English"],n:"May 1941, run from a windowless plot room under the Admiralty."},
+    {t:"Millions Like Us",y:1943,c:"GB",k:"F",g:"A2",lg:["English"],n:"Conscripted women in an aircraft factory. The best British film about the home front, made in the middle of it."},
+    {t:"Mediterraneo",y:1991,c:"IT",k:"F",g:"B1",lg:["Italian","Greek"],n:"Italian soldiers marooned on a Greek island in 1941 quietly stop fighting. Gentle, and Oscar-winning."},
+    {t:"Danger UXB",y:1979,c:"GB",k:"S",g:"A2",lg:["English"],n:"Bomb disposal in London, 1940–41. Characters die mid-sentence, as they did."},
+    {t:"Foyle's War",y:2002,c:"GB",k:"S",g:"A1",lg:["English"],n:"A policeman keeps investigating ordinary murders in wartime Hastings. Better social history than most documentaries."},
+    {t:"Dad's Army",y:1968,c:"GB",k:"S",g:"B1",lg:["English"],n:"The Home Guard as farce, written by men who had served in it."}
+  ]
+},
+{
+  no:"Part IV", title:"June – December 1941 · Barbarossa and Pearl Harbor",
+  ctx:"Three million men cross into the Soviet Union on 22 June. Kiev, Vyazma, the gates of Moscow. The Einsatzgruppen follow the armies. On 7 December the war becomes global.",
+  items:[
+    {t:"The Brest Fortress",o:"Брестская крепость",y:2010,c:"RU",k:"F",g:"B1",lg:["Russian","German"],n:"The border garrison overrun on the first morning, holding out for weeks after the front has moved east."},
+    {t:"The Cranes Are Flying",o:"Летят журавли",y:1957,c:"SU",k:"F",g:"A1",lg:["Russian"],n:"The war from the woman left behind. The first Soviet film to admit that grief was not always heroic; Palme d'Or, and the camerawork still astonishes."},
+    {t:"The Fate of a Man",o:"Судьба человека",y:1959,c:"SU",k:"F",g:"A1",lg:["Russian","German"],n:"Sholokhov's driver goes into German captivity and comes out having lost everything. A landmark: Soviet POWs were an unmentionable subject until Bondarchuk made this."},
+    {t:"Ballad of a Soldier",o:"Баллада о солдате",y:1959,c:"SU",k:"F",g:"A1",lg:["Russian"],n:"A boy is given six days' leave as a reward and spends every one of them helping strangers. The war almost entirely offscreen, and all the more effective."},
+    {t:"Tora! Tora! Tora!",y:1970,c:"US",k:"F",g:"A2",lg:["English","Japanese"],n:"Pearl Harbor made twice over, by American and Japanese units, with both sides allowed to be competent."},
+    {t:"From Here to Eternity",y:1953,c:"US",k:"F",g:"A2",lg:["English"],n:"Peacetime Schofield Barracks up to the morning of 7 December."},
+    {t:"Casablanca",y:1942,c:"US",k:"F",g:"A1",lg:["English","French"],n:"December 1941 in Vichy Morocco. A film about neutrality ending, written by refugees, most of the supporting cast among them."},
+    {t:"Pearl Harbor",y:2001,c:"US",k:"F",g:"C3",lg:["English","Japanese"],n:"Vast, loud, and mostly a love triangle.",w:"The attack sequence is spectacle rather than record; the Doolittle coda compresses events beyond recognition."},
+    {t:"The Desert Fox",y:1951,c:"US",k:"F",g:"B2",lg:["English"],n:"Rommel in the desert and in the 1944 plot. Notable as the first Anglo-American film to make a German general a hero, which was controversial at the time and remains debatable."},
+    {t:"Generation War",o:"Unsere Mütter, unsere Väter",y:2013,c:"DE",k:"S",g:"A2",lg:["German","Russian","Polish"],n:"Five Berlin friends from Barbarossa to the ruins.",w:"Widely criticised in Poland for its portrayal of the Home Army as antisemitic bandits. Watch it, but not as a source on Polish resistance."}
+  ]
+},
+{
+  no:"Part V", title:"1942 · The Turn",
+  ctx:"Wannsee in January. The Philippines and Singapore fall. Midway in June, then Guadalcanal, El Alamein, and the Sixth Army walking into Stalingrad.",
+  items:[
+    {t:"Conspiracy",y:2001,c:"GB",k:"F",g:"A1",lg:["English"],n:"Ninety minutes at the Wannsee villa on 20 January 1942, drawn from the one surviving copy of the minutes. Bureaucrats settling a genocide over lunch."},
+    {t:"Das Boot",y:1981,c:"DE",k:"F",g:"A1",lg:["German"],n:"A U-boat patrol out of La Rochelle. Boredom, then terror, then boredom. Seek out the Director's Cut or the original television edit."},
+    {t:"Stalingrad",y:1993,c:"DE",k:"F",g:"A1",lg:["German","Russian"],n:"Vilsmaier's German platoon from Italy to the frozen ruin. The despairing counterpart to every Anglo-American siege film."},
+    {t:"Enemy at the Gates",y:2001,c:"US",k:"F",g:"B2",lg:["English"],n:"Stalingrad as a sniper duel.",w:"Major König almost certainly never existed; the duel comes from Soviet wartime propaganda. The opening Volga crossing, with one rifle between two men, is also a myth."},
+    {t:"Ivan's Childhood",o:"Иваново детство",y:1962,c:"SU",k:"F",g:"A1",lg:["Russian"],n:"Tarkovsky's first feature. A twelve-year-old scout crosses the lines at night, his childhood surviving only in dreams."},
+    {t:"The Ascent",o:"Восхождение",y:1977,c:"SU",k:"F",g:"A1",lg:["Russian"],n:"Two partisans captured in the Belarusian winter; one talks, one does not. Shepitko's film is a Passion play in the snow and possibly the finest Soviet war film ever made."},
+    {t:"Trial on the Road",o:"Проверка на дорогах",y:1971,c:"SU",k:"F",g:"A2",lg:["Russian","German"],n:"A defector tries to rejoin the partisans. Shelved by the censors for fifteen years for suggesting that redemption was complicated."},
+    {t:"The Dawns Here Are Quiet",o:"А зори здесь тихие",y:1972,c:"SU",k:"F",g:"A2",lg:["Russian"],n:"Five young women of an anti-aircraft crew against German paratroopers in Karelia."},
+    {t:"Twenty Days Without War",o:"Двадцать дней без войны",y:1976,c:"SU",k:"F",g:"A2",lg:["Russian"],n:"A correspondent's leave in Tashkent. The rear as its own kind of desolation."},
+    {t:"Army of Shadows",o:"L'Armée des ombres",y:1969,c:"FR",k:"F",g:"A1",lg:["French","German"],n:"Melville had been in the Resistance. His account is grey, procedural and almost unbearably bleak — a network mostly executing its own."},
+    {t:"The Shop on Main Street",o:"Obchod na korze",y:1965,c:"CZ",k:"F",g:"A1",lg:["Slovak","German"],n:"A Slovak carpenter is made 'Aryan controller' of a deaf old woman's button shop. Complicity in miniature."},
+    {t:"Anthropoid",y:2016,c:"GB",k:"F",g:"B1",lg:["English"],n:"The killing of Heydrich in Prague, May 1942, and the siege of the church that followed."},
+    {t:"Operation Daybreak",y:1975,c:"GB",k:"F",g:"B1",lg:["English"],n:"The same operation, filmed on the actual Prague streets and in some ways the sterner version."},
+    {t:"Ice Cold in Alex",y:1958,c:"GB",k:"F",g:"A2",lg:["English"],n:"An ambulance crosses the desert from Tobruk. The finest advertisement for lager ever filmed, and a good deal more than that."},
+    {t:"Five Graves to Cairo",y:1943,c:"US",k:"F",g:"B1",lg:["English","German"],n:"Wilder's desert hotel intrigue, made while the outcome was still open."},
+    {t:"Sahara",y:1943,c:"US",k:"F",g:"B2",lg:["English"],n:"Bogart's lost tank crew holds a well in Libya."},
+    {t:"The Thin Red Line",y:1998,c:"US",k:"F",g:"A1",lg:["English","Japanese"],n:"Guadalcanal as a philosophical poem. It divides people sharply; the ones it lands on never forget it."},
+    {t:"They Were Expendable",y:1945,c:"US",k:"F",g:"B1",lg:["English"],n:"Ford on the PT boats during the Philippines defeat, made by a man who had filmed Midway himself."},
+    {t:"The Bridge on the River Kwai",y:1957,c:"GB",k:"F",g:"A1",lg:["English","Japanese"],n:"Superb film, and firmly a fiction.",w:"Real Burma Railway survivors objected to the portrayal of collaboration; the historical Colonel Toosey obstructed the work rather than championing it."},
+    {t:"Merry Christmas, Mr. Lawrence",y:1983,c:"JP",k:"F",g:"A2",lg:["English","Japanese"],n:"A Java prison camp, 1942, and the incompatibility of two codes of honour. Bowie, Sakamoto, and Sakamoto's score."},
+    {t:"The Railway Man",y:2013,c:"GB",k:"F",g:"B1",lg:["English","Japanese"],n:"Eric Lomax on the railway, and his meeting with his interrogator forty years later."},
+    {t:"The Lisbon Maru",o:"东极岛",y:2025,c:"CN",k:"F",g:"B1",lg:["Mandarin","English","Japanese"],n:"Chinese fishermen from the Dongji islands pull British prisoners from the sea after their unmarked transport is torpedoed, October 1942."},
+    {t:"The Pacific",y:2010,c:"US",k:"S",g:"A1",lg:["English"],n:"Guadalcanal to Okinawa through three Marines. Grimmer and more fragmentary than Band of Brothers, and truer for it."},
+    {t:"Tenko",y:1981,c:"GB",k:"S",g:"A2",lg:["English","Japanese"],n:"Women interned by the Japanese after the fall of Singapore. Quietly devastating."},
+    {t:"Colditz",y:1972,c:"GB",k:"S",g:"A2",lg:["English","German"],n:"The escape-proof castle, with Bavarian tedium given as much weight as the tunnels."},
+    {t:"Secret Army",y:1977,c:"GB",k:"S",g:"A2",lg:["English","German"],n:"A Belgian line running downed aircrew to Spain. Bleak, adult, and the show 'Allo 'Allo! was parodying."},
+    {t:"Das Boot",y:2018,c:"DE",k:"S",g:"B1",lg:["German","French","English"],n:"The series continuation — La Rochelle above the waterline as much as the boat below it."},
+    {t:"SAS Rogue Heroes",y:2022,c:"GB",k:"S",g:"B2",lg:["English"],n:"The founding of the SAS in the desert, played loud and loose to a rock soundtrack."}
+  ]
+},
+{
+  no:"Part VI", title:"1943 · Kursk, Sicily, the Ghetto, the Bomber Offensive",
+  ctx:"Stalingrad surrenders in February. The White Rose are executed. The Warsaw Ghetto rises in April. Kursk, Sicily, the Italian armistice, and the combined bomber offensive over Germany.",
+  items:[
+    {t:"Come and See",o:"Иди и смотри",y:1985,c:"SU",k:"F",g:"A1",lg:["Russian","German"],n:"A Belarusian boy joins the partisans and watches a village burn. Klimov's film is the closest cinema has come to the anti-partisan war, and the single most necessary title in this file."},
+    {t:"Sophie Scholl: The Final Days",o:"Sophie Scholl – Die letzten Tage",y:2005,c:"DE",k:"F",g:"A1",lg:["German"],n:"Six days in February 1943, built from the Gestapo transcripts found in the East German archives. The interrogation scenes are close to verbatim."},
+    {t:"The Pianist",y:2002,c:"PL",k:"F",g:"A1",lg:["English","German"],n:"Szpilman in the ghetto and the ruins. Polanski survived the Kraków ghetto himself, and the film's refusal of uplift shows it."},
+    {t:"The Zone of Interest",y:2023,c:"GB",k:"F",g:"A1",lg:["German","Polish"],n:"The Höss family's garden on the other side of the Auschwitz wall. The atrocity is entirely on the soundtrack. Formally the boldest film here."},
+    {t:"In Darkness",o:"W ciemności",y:2011,c:"PL",k:"F",g:"A1",lg:["Polish","Yiddish","German"],n:"A Lwów sewer worker hides Jews in the tunnels below the city, initially for money."},
+    {t:"Europa Europa",o:"Hitlerjunge Salomon",y:1990,c:"DE",k:"F",g:"A2",lg:["German","Russian","Polish"],n:"A Jewish boy survives by passing as a Hitler Youth. True, and almost too strange to be."},
+    {t:"The Cross of Iron",y:1977,c:"GB",k:"F",g:"A2",lg:["English"],n:"Peckinpah with a German platoon on the retreating Kuban front. Anti-heroic to the bone; Coburn's Steiner despises his own side's officers."},
+    {t:"The Dam Busters",y:1955,c:"GB",k:"F",g:"A2",lg:["English"],n:"The Möhne and Eder raid, May 1943, with the physics of the bouncing bomb given proper screen time."},
+    {t:"Twelve O'Clock High",y:1949,c:"US",k:"F",g:"A1",lg:["English"],n:"Command exhaustion in a B-17 group. Still used as a case study in leadership schools."},
+    {t:"Memphis Belle",y:1990,c:"US",k:"F",g:"B2",lg:["English"],n:"One daylight mission over Bremen, considerably tidied up."},
+    {t:"Operation Mincemeat",y:2021,c:"GB",k:"F",g:"B1",lg:["English"],n:"A corpse with false papers is floated off Huelva to sell the Germans a landing in Greece."},
+    {t:"The Guns of Navarone",y:1961,c:"GB",k:"F",g:"B2",lg:["English"],n:"Aegean commando adventure. Splendid, invented."},
+    {t:"Rome, Open City",o:"Roma città aperta",y:1945,c:"IT",k:"F",g:"A1",lg:["Italian","German"],n:"Rossellini shot it in the streets weeks after the Germans left, on scavenged film stock. Neorealism starts here."},
+    {t:"General Della Rovere",o:"Il generale Della Rovere",y:1959,c:"IT",k:"F",g:"A2",lg:["Italian","German"],n:"A con man impersonates a partisan general for the Gestapo and grows into the part."},
+    {t:"Two Women",o:"La ciociara",y:1960,c:"IT",k:"F",g:"A1",lg:["Italian"],n:"A mother and daughter walk south through the fighting. De Sica on what liberation cost civilians, including at the hands of Allied troops."},
+    {t:"The Human Condition",o:"人間の條件",y:1959,c:"JP",k:"F",g:"A1",lg:["Japanese","Mandarin","Russian"],n:"Kobayashi's nine-and-a-half-hour trilogy: a pacifist runs a Manchurian labour camp, is conscripted, and walks into Soviet captivity. Japan's own reckoning, and a masterpiece."},
+    {t:"The Heavy Water War",o:"Kampen om tungtvannet",y:2015,c:"NO",k:"S",g:"A2",lg:["Norwegian","German","English"],n:"Vemork sabotage told from four sides at once — saboteurs, Heisenberg's programme, the plant, and London."},
+    {t:"The 12th Man",o:"Den 12. mann",y:2017,c:"NO",k:"F",g:"A2",lg:["Norwegian","German"],n:"A saboteur escapes north through the Arctic winter, hunted the whole way. Endurance cinema."},
+    {t:"Max Manus",y:2008,c:"NO",k:"F",g:"B1",lg:["Norwegian","German"],n:"Oslo harbour sabotage, and the drinking afterwards."},
+    {t:"Battle of Neretva",o:"Bitka na Neretvi",y:1969,c:"YU",k:"F",g:"B2",lg:["Serbo-Croatian","German"],n:"Tito's partisans and the wounded column, staged on a scale no one could afford today."},
+    {t:"Charité at War",o:"Charité",y:2019,c:"DE",k:"S",g:"B1",lg:["German"],n:"A Berlin teaching hospital in 1943, where the euthanasia programme runs through the wards."},
+    {t:"Masters of the Air",y:2024,c:"US",k:"S",g:"B1",lg:["English"],n:"The Eighth Air Force out of Thorpe Abbotts. Handsome, and thinner on character than its two predecessors."},
+    {t:"Manhattan",y:2014,c:"US",k:"S",g:"B1",lg:["English"],n:"Los Alamos as a fictionalised pressure cooker of secrecy and marriages."}
+  ]
+},
+{
+  no:"Part VII", title:"1944 · Overlord, Bagration, Warsaw, the Bulge",
+  ctx:"Monte Cassino and Anzio. Normandy in June, and Bagration in the east ten days later, which destroyed a larger German force. The July plot. Warsaw rises and is left to die. Market Garden, then the Ardennes.",
+  items:[
+    {t:"Saving Private Ryan",y:1998,c:"US",k:"F",g:"A1",lg:["English","German","French"],n:"The Omaha landing reset how war is filmed. What follows is a fable, and knows it."},
+    {t:"Band of Brothers",y:2001,c:"US",k:"S",g:"A1",lg:["English"],n:"Easy Company from Toccoa to the Eagle's Nest. The interviews with the actual men, at the head of each episode, are what lift it."},
+    {t:"The Longest Day",y:1962,c:"US",k:"F",g:"A2",lg:["English","German","French"],n:"D-Day from every side, each nationality speaking its own language — unusual and admirable for 1962."},
+    {t:"Overlord",y:1975,c:"GB",k:"F",g:"A2",lg:["English"],n:"A conscript's short life, cut with real Imperial War Museum footage so seamlessly you cannot find the join. A quiet marvel."},
+    {t:"The Big Red One",y:1980,c:"US",k:"F",g:"A2",lg:["English"],n:"Fuller filmed his own war, from North Africa to a liberated camp. Find the Reconstruction cut."},
+    {t:"Kanal",o:"Kanał",y:1957,c:"PL",k:"F",g:"A1",lg:["Polish"],n:"The Warsaw Rising's last days, most of it in the sewers. Wajda tells you in the first minute that they will all die, then makes you watch."},
+    {t:"Warsaw '44",o:"Miasto 44",y:2014,c:"PL",k:"F",g:"B2",lg:["Polish"],n:"The same rising from a teenage perspective, in a far more modern register."},
+    {t:"Son of Saul",o:"Saul fia",y:2015,c:"HU",k:"F",g:"A1",lg:["Hungarian","German","Yiddish"],n:"A Sonderkommando member in Auschwitz, October 1944, shot in shallow focus so that the horror stays at the edge of frame. Unrelenting."},
+    {t:"The Last Stage",o:"Ostatni etap",y:1948,c:"PL",k:"F",g:"A1",lg:["Polish","German","Russian"],n:"Filmed at Auschwitz in 1947 by a woman who had been imprisoned there, with survivors in the cast. The images every later film has borrowed."},
+    {t:"Au revoir les enfants",y:1987,c:"FR",k:"F",g:"A1",lg:["French","German"],n:"Malle's boarding school hides three Jewish boys until January 1944. He was there; the last shot is his own memory."},
+    {t:"Lacombe, Lucien",y:1974,c:"FR",k:"F",g:"A2",lg:["French"],n:"A farm boy is turned down by the Resistance and joins the Gestapo's French auxiliaries instead. It caused a national row for refusing to make collaboration monstrous."},
+    {t:"Is Paris Burning?",o:"Paris brûle-t-il ?",y:1966,c:"FR",k:"F",g:"B1",lg:["French","German","English"],n:"The liberation of Paris, August 1944, with a script by Coppola and Vidal and half the stars in Europe."},
+    {t:"Diplomacy",o:"Diplomatie",y:2014,c:"FR",k:"F",g:"B1",lg:["French","German"],n:"A Swedish consul talks von Choltitz out of demolishing Paris. Two men, one room.",w:"The night-long conversation is a dramatic invention; Choltitz's motives were rather more self-interested."},
+    {t:"La Bataille du rail",y:1946,c:"FR",k:"F",g:"A2",lg:["French","German"],n:"Railwaymen sabotage the lines before Normandy, played largely by the men who did it."},
+    {t:"Flame & Citron",o:"Flammen & Citronen",y:2008,c:"DK",k:"F",g:"A2",lg:["Danish","German"],n:"Two Danish assassins begin to doubt who is picking their targets. Resistance as a morally filthy business."},
+    {t:"Black Book",o:"Zwartboek",y:2006,c:"NL",k:"F",g:"A2",lg:["Dutch","German","English"],n:"Verhoeven's Dutch resistance thriller, in which nobody's loyalties survive contact with the plot."},
+    {t:"Soldier of Orange",o:"Soldaat van Oranje",y:1977,c:"NL",k:"F",g:"A2",lg:["Dutch","German","English"],n:"Six students take six different paths through the occupation."},
+    {t:"The Forgotten Battle",o:"De slag om de Schelde",y:2020,c:"NL",k:"F",g:"B1",lg:["Dutch","English","German"],n:"The Scheldt, autumn 1944 — the grim campaign to open Antwerp, told from Dutch, British and German sides."},
+    {t:"A Bridge Too Far",y:1977,c:"GB",k:"F",g:"A2",lg:["English","German","Dutch"],n:"Market Garden as an expensive, well-documented failure. Rare for a war epic to end in defeat and blame the planners."},
+    {t:"Valkyrie",y:2008,c:"US",k:"F",g:"B1",lg:["English","German"],n:"The 20 July plot, procedurally accurate on the mechanics of the coup even when the accents wander."},
+    {t:"The Great Escape",y:1963,c:"US",k:"F",g:"A2",lg:["English","German"],n:"Stalag Luft III, March 1944. Fifty of the seventy-six recaptured men were murdered, which the film does not soften.",w:"There were no American participants in the escape, and no motorcycle."},
+    {t:"Stalag 17",y:1953,c:"US",k:"F",g:"A1",lg:["English","German"],n:"Wilder finds an informer in a POW hut and turns it into comedy, then doesn't."},
+    {t:"Von Ryan's Express",y:1965,c:"US",k:"F",g:"B2",lg:["English","German","Italian"],n:"A hijacked prison train runs for Switzerland. The ending earns its keep."},
+    {t:"Ill Met by Moonlight",y:1957,c:"GB",k:"F",g:"B2",lg:["English","German","Greek"],n:"SOE kidnaps a German general on Crete and walks him over the mountains."},
+    {t:"A Call to Spy",y:2019,c:"US",k:"F",g:"B2",lg:["English","French"],n:"SOE's F Section and the women it sent into France — Virginia Hall, Noor Inayat Khan."},
+    {t:"Charlotte Gray",y:2001,c:"GB",k:"F",g:"B2",lg:["English","French"],n:"An SOE courier in the Auvergne, more romance than tradecraft."},
+    {t:"Sisu",y:2022,c:"FI",k:"F",g:"B2",lg:["Finnish","German","English"],n:"Lapland 1944, a retreating SS column, and one exceptionally difficult prospector. Not history. Enormous fun."},
+    {t:"The Unknown Soldier",o:"Tuntematon sotilas",y:2017,c:"FI",k:"F",g:"A2",lg:["Finnish"],n:"Finnish infantry through the Continuation War to the 1944 collapse. In Finland this story is close to scripture."},
+    {t:"Battle of the Bulge",y:1965,c:"US",k:"F",g:"C3",lg:["English","German"],n:"Enjoyable nonsense.",w:"Fought on dry Spanish plains with the wrong tanks. Eisenhower came out of retirement to denounce its inaccuracy."},
+    {t:"Where Eagles Dare",y:1968,c:"GB",k:"F",g:"B2",lg:["English","German"],n:"Alpine castle, cable car, Burton and Eastwood. Pure adventure, and one of the best of its kind."},
+    {t:"Kelly's Heroes",y:1970,c:"US",k:"F",g:"C3",lg:["English"],n:"A gold heist behind the lines, played with 1970 attitudes throughout."},
+    {t:"The Dirty Dozen",y:1967,c:"US",k:"F",g:"B2",lg:["English"],n:"Condemned men on a suicide raid. Invented, and the model for a hundred imitators."},
+    {t:"The Monuments Men",y:2014,c:"US",k:"F",g:"C3",lg:["English","German","French"],n:"The recovery of looted art, handled far too lightly for the material."},
+    {t:"Windtalkers",y:2002,c:"US",k:"F",g:"C3",lg:["English","Navajo","Japanese"],n:"Navajo code talkers on Saipan.",w:"The premise that minders were ordered to kill their code talkers rather than let them be captured is not supported by the record, and Navajo veterans objected to it."},
+    {t:"The Boy in the Striped Pyjamas",y:2008,c:"GB",k:"F",g:"C3",lg:["English"],n:"A commandant's son befriends a boy through the wire.",w:"The Auschwitz Memorial has repeatedly warned against its use in teaching: no child that age survived selection, and the plot centres German innocence. Watch Son of Saul instead."},
+    {t:"Combat!",y:1962,c:"US",k:"S",g:"B1",lg:["English"],n:"Five seasons with one squad in Normandy and beyond. Modest and surprisingly durable."},
+    {t:"A Small Light",y:2023,c:"US",k:"S",g:"A2",lg:["English"],n:"Miep Gies, who hid the Frank family and then kept the diary safe. The Annex from the helper's side."},
+    {t:"We Were the Lucky Ones",y:2024,c:"US",k:"S",g:"B1",lg:["English"],n:"One Polish Jewish family scattered across five continents, based on the author's own."},
+    {t:"The Tattooist of Auschwitz",y:2024,c:"GB",k:"S",g:"C3",lg:["English","German"],n:"Well made and well acted.",w:"Historians and the Auschwitz Memorial have documented substantial factual errors in the source book."}
+  ]
+},
+{
+  no:"Part VIII", title:"1945 · Iwo Jima to Hiroshima",
+  ctx:"The Vistula–Oder offensive, Dresden, the Rhine crossings. Iwo Jima and Okinawa. The camps are opened. Berlin falls in May, and the Pacific war ends in August.",
+  items:[
+    {t:"Letters from Iwo Jima",y:2006,c:"US",k:"F",g:"A1",lg:["Japanese","English"],n:"Eastwood's Japanese-language companion piece, from inside the tunnels of Mount Suribachi. The better half of the pair by some distance."},
+    {t:"Flags of Our Fathers",y:2006,c:"US",k:"F",g:"B1",lg:["English"],n:"The flag-raising photograph and the bond tour that followed it. A film about how an image is manufactured."},
+    {t:"Hacksaw Ridge",y:2016,c:"AU",k:"F",g:"B1",lg:["English","Japanese"],n:"Desmond Doss on the Maeda Escarpment, Okinawa. The combat is extreme; the first half is not."},
+    {t:"Downfall",o:"Der Untergang",y:2004,c:"DE",k:"F",g:"A1",lg:["German","Russian"],n:"The last twelve days in the bunker, from Traudl Junge's testimony. Germany's argument with itself about whether Hitler should be shown as a man at all."},
+    {t:"The Bridge",o:"Die Brücke",y:1959,c:"DE",k:"F",g:"A1",lg:["German"],n:"Seven schoolboys are given a worthless bridge to defend in April 1945. Made fourteen years after, by a director who had been one of them."},
+    {t:"The Captain",o:"Der Hauptmann",y:2017,c:"DE",k:"F",g:"A2",lg:["German"],n:"A deserter finds an officer's uniform and discovers how much authority a coat confers. Based on Willi Herold, and pitiless."},
+    {t:"A Woman in Berlin",o:"Anonyma",y:2008,c:"DE",k:"F",g:"A2",lg:["German","Russian"],n:"The mass rapes during the fall of Berlin, from the anonymous diary that Germany refused to read for fifty years."},
+    {t:"Fury",y:2014,c:"US",k:"F",g:"B1",lg:["English","German"],n:"A Sherman crew in the last weeks. Excellent on the claustrophobia and the gun tubes; the final stand is invention."},
+    {t:"The Bridge at Remagen",y:1969,c:"US",k:"F",g:"B2",lg:["English","German"],n:"The Ludendorff bridge taken intact in March 1945, filmed in Czechoslovakia until the Soviets invaded and the crew had to leave."},
+    {t:"The Bunker",y:1981,c:"US",k:"F",g:"B1",lg:["English"],n:"The earlier bunker film, with Anthony Hopkins and a colder eye."},
+    {t:"Jojo Rabbit",y:2019,c:"NZ",k:"F",g:"B1",lg:["English","German"],n:"Satire that turns, halfway through, into something much sadder."},
+    {t:"Ashes and Diamonds",o:"Popiół i diament",y:1958,c:"PL",k:"F",g:"A1",lg:["Polish"],n:"8 May 1945. A Home Army assassin is ordered to kill a communist official on the day the war ends. Wajda's greatest film, and a coded protest."},
+    {t:"Grave of the Fireflies",o:"火垂るの墓",y:1988,c:"JP",k:"F",g:"A1",lg:["Japanese"],n:"Two children after the firebombing of Kobe. Animated, and the hardest watch in this file. Do not put it on for the children."},
+    {t:"In This Corner of the World",o:"この世界の片隅に",y:2016,c:"JP",k:"F",g:"A1",lg:["Japanese"],n:"An ordinary young wife in Kure, near Hiroshima, 1944–45. Gentle and domestic right up until it isn't."},
+    {t:"Fires on the Plain",o:"野火",y:1959,c:"JP",k:"F",g:"A1",lg:["Japanese"],n:"A tubercular soldier starving on Leyte. Ichikawa's film goes to the end of what men will do, and does not blink."},
+    {t:"The Burmese Harp",o:"ビルマの竪琴",y:1956,c:"JP",k:"F",g:"A1",lg:["Japanese"],n:"A Japanese soldier stays behind in Burma to bury the dead. The other side of Ichikawa's coin."},
+    {t:"Black Rain",o:"黒い雨",y:1989,c:"JP",k:"F",g:"A1",lg:["Japanese"],n:"Imamura on Hiroshima's aftermath and the slow social death of the survivors."},
+    {t:"Barefoot Gen",o:"はだしのゲン",y:1983,c:"JP",k:"F",g:"A2",lg:["Japanese"],n:"Animated, drawn from a survivor's own memory of the morning of 6 August."},
+    {t:"Japan's Longest Day",o:"日本のいちばん長い日",y:1967,c:"JP",k:"F",g:"A2",lg:["Japanese"],n:"The twenty-four hours before the surrender broadcast, including the attempted coup to stop it."},
+    {t:"Devils on the Doorstep",o:"鬼子来了",y:2000,c:"CN",k:"F",g:"A1",lg:["Mandarin","Japanese"],n:"Villagers are left holding two prisoners as the war ends. Banned in China for refusing every patriotic convention. A savage black comedy."},
+    {t:"Oppenheimer",y:2023,c:"US",k:"F",g:"A1",lg:["English"],n:"Los Alamos, Trinity, and the security hearing that followed. The bomb is a decision here, not a spectacle."},
+    {t:"The Great Raid",y:2005,c:"US",k:"F",g:"B2",lg:["English","Japanese"],n:"The Cabanatuan rescue in the Philippines, January 1945. Faithful, and rather flat."},
+    {t:"The Bombardment",o:"Skyggen i mit øje",y:2021,c:"DK",k:"F",g:"B1",lg:["Danish","German"],n:"The RAF hits the wrong building in Copenhagen — a school — in March 1945. Told from the children's side."},
+    {t:"The Liberator",y:2020,c:"US",k:"S",g:"B2",lg:["English"],n:"Animated over live action; the 157th Infantry from Sicily to Dachau."}
+  ]
+},
+{
+  no:"Part IX", title:"Aftermath · 1945–1949",
+  ctx:"Rubble, displaced persons, denazification and the trials. Twelve million Germans expelled from the east. Occupied Vienna and Berlin. The rehearsal for the next confrontation.",
+  items:[
+    {t:"Judgment at Nuremberg",y:1961,c:"US",k:"F",g:"A1",lg:["English","German"],n:"The judges' trial, not the famous one. It asks how a legal system committed the crimes, which is the harder question."},
+    {t:"Nuremberg",y:2025,c:"US",k:"F",g:"B1",lg:["English","German"],n:"The army psychiatrist assigned to assess the defendants, and his long duel with Göring."},
+    {t:"The Murderers Are Among Us",o:"Die Mörder sind unter uns",y:1946,c:"DE",k:"F",g:"A1",lg:["German"],n:"The first German film made after the war, shot in the actual rubble of Berlin. A surgeon recognises his old commander running a saucepan factory."},
+    {t:"Germany Year Zero",o:"Germania anno zero",y:1948,c:"IT",k:"F",g:"A1",lg:["German","Italian"],n:"Rossellini follows a twelve-year-old through the ruins of Berlin. Almost unbearable, and only seventy minutes."},
+    {t:"The Best Years of Our Lives",y:1946,c:"US",k:"F",g:"A1",lg:["English"],n:"Three men come home. Harold Russell, who had lost both hands, plays himself. Still the best film about demobilisation."},
+    {t:"The Third Man",y:1949,c:"GB",k:"F",g:"A1",lg:["English","German"],n:"Occupied Vienna, four powers, one sewer. The black market as the true postwar economy."},
+    {t:"Phoenix",y:2014,c:"DE",k:"F",g:"A1",lg:["German"],n:"A camp survivor with a reconstructed face returns to a husband who does not recognise her. The last scene is one of cinema's great endings."},
+    {t:"Land of Mine",o:"Under sandet",y:2015,c:"DK",k:"F",g:"A1",lg:["Danish","German"],n:"German boy prisoners are made to clear two million mines from the Danish coast in 1945. A film about the victors behaving badly."},
+    {t:"1945",y:2017,c:"HU",k:"F",g:"A2",lg:["Hungarian","Russian"],n:"Two Jewish men walk into a Hungarian village, and the village panics about what it took. Ninety minutes, black and white, no wasted frame."},
+    {t:"The Assault",o:"De aanslag",y:1986,c:"NL",k:"F",g:"A2",lg:["Dutch","German"],n:"One night in 1945 Haarlem, and forty years of learning what actually happened. Oscar winner."},
+    {t:"A Foreign Affair",y:1948,c:"US",k:"F",g:"B1",lg:["English","German"],n:"Wilder's comedy about occupied Berlin, made by a man who had just been running the Americans' film denazification programme."},
+    {t:"Ida",y:2013,c:"PL",k:"F",g:"A1",lg:["Polish"],n:"A novice nun learns in 1962 what happened to her family in 1943. The reckoning arriving two decades late."},
+    {t:"The Aftermath",y:2019,c:"GB",k:"F",g:"C3",lg:["English","German"],n:"Requisitioned Hamburg, 1946. Handsome, and mostly a romance."},
+    {t:"The Man in the High Castle",y:2015,c:"US",k:"S",g:"B2",lg:["English","Japanese","German"],n:"Alternate history: the Axis won. Season one is excellent, and it does not sustain."}
+  ]
+},
+{
+  no:"Part X", title:"Spanning the war · Surveys, epics and the factual record",
+  ctx:"Works that run the length of the conflict, and the documentary record. Watch The World at War first if you want the map in your head before starting anywhere above.",
+  items:[
+    {t:"Schindler's List",y:1993,c:"US",k:"F",g:"A1",lg:["English","German","Hebrew","Polish"],n:"Kraków, 1939–45. Still the point of entry for most people, and it survives the weight put on it."},
+    {t:"The Tin Drum",o:"Die Blechtrommel",y:1979,c:"DE",k:"F",g:"A1",lg:["German","Polish"],n:"Grass's Danzig, from the Free City to the expulsions, through a boy who refuses to grow. Palme d'Or and Oscar."},
+    {t:"Mephisto",y:1981,c:"HU",k:"F",g:"A1",lg:["German","Hungarian"],n:"An actor accepts every compromise the Reich offers him. The definitive film about collaboration as career advancement."},
+    {t:"Sunshine",y:1999,c:"HU",k:"F",g:"B1",lg:["English"],n:"Three generations of one Hungarian Jewish family through empire, fascism and communism. Fiennes plays all three men. Long, and it earns the length."},
+    {t:"Defiance",y:2008,c:"US",k:"F",g:"B1",lg:["English","Russian","German"],n:"The Bielski brothers hide twelve hundred Jews in the Naliboki forest, 1941–44. A rare film about Jews fighting back."},
+    {t:"Underground",y:1995,c:"YU",k:"F",g:"A2",lg:["Serbo-Croatian","German"],n:"Kusturica's cellar of Yugoslavs kept fighting the war for fifty years. Palme d'Or, and furiously contested at home."},
+    {t:"Empire of the Sun",y:1987,c:"US",k:"F",g:"A2",lg:["English","Mandarin","Japanese"],n:"Ballard's Shanghai internment, from a boy who thinks the war is thrilling until it isn't."},
+    {t:"Life Is Beautiful",o:"La vita è bella",y:1997,c:"IT",k:"F",g:"B1",lg:["Italian","German"],n:"A father turns the camp into a game for his son. Loved and disputed in roughly equal measure."},
+    {t:"Hiroshima mon amour",y:1959,c:"FR",k:"F",g:"A1",lg:["French","Japanese"],n:"Resnais and Duras on memory itself: a French woman's shaved head in Nevers, set beside a city's erasure."},
+    {t:"Patton",y:1970,c:"US",k:"F",g:"A2",lg:["English"],n:"Scott's Patton from Tunisia to the end. Intended as a critique; widely received as a hagiography."},
+    {t:"The Imitation Game",y:2014,c:"GB",k:"F",g:"B2",lg:["English"],n:"Bletchley Park and Turing.",w:"Turing did not build the bombe alone, the Polish cryptographers who broke Enigma first are omitted, and the invented plot in which the team suppresses intelligence to protect a colleague's brother is a serious distortion."},
+    {t:"The Diary of Anne Frank",y:1959,c:"US",k:"F",g:"A2",lg:["English"],n:"The Annex, 1942–44. The Stevens version, made when the material was still raw."},
+    {t:"Aimée & Jaguar",y:1999,c:"DE",k:"F",g:"B1",lg:["German"],n:"A Jewish woman and an officer's wife fall in love in bombed Berlin. True story."},
+    {t:"The English Patient",y:1996,c:"GB",k:"F",g:"B1",lg:["English","German","Italian"],n:"The desert survey expeditions and an Italian villa in 1945, joined by a burn ward."},
+    {t:"The Book Thief",y:2013,c:"US",k:"F",g:"C3",lg:["English","German"],n:"A German small town through a foster child's eyes. Softened for a young audience."},
+    {t:"U-571",y:2000,c:"US",k:"F",g:"C3",lg:["English","German"],n:"A capable submarine thriller.",w:"It gives Americans the capture of an Enigma machine. The real captures — U-110 and others — were British, before the United States entered the war. It prompted a complaint in Parliament."},
+    {t:"The World at War",y:1973,c:"GB",k:"D",g:"A1",lg:["English"],n:"Twenty-six hours, Olivier narrating, made while the participants were still alive to be interviewed. Nothing has replaced it and probably nothing will."},
+    {t:"Night and Fog",o:"Nuit et brouillard",y:1956,c:"FR",k:"D",g:"A1",lg:["French"],n:"Thirty-two minutes on the camps, made ten years after. Resnais cuts between colour footage of the empty sites and the archive. The foundational film on the subject."},
+    {t:"Shoah",y:1985,c:"FR",k:"D",g:"A1",lg:["French","German","Polish"],n:"Nine and a half hours of testimony and no archive footage at all — Lanzmann films only the places as they are now and the people who were there."},
+    {t:"The Sorrow and the Pity",o:"Le Chagrin et la Pitié",y:1969,c:"FR",k:"D",g:"A1",lg:["French","German","English"],n:"Clermont-Ferrand under occupation. It demolished the myth that France had been a nation of resisters, and French television refused to show it for twelve years."},
+    {t:"Five Came Back",y:2017,c:"US",k:"D",g:"A2",lg:["English"],n:"Ford, Capra, Huston, Wyler and Stevens go to war with cameras, and come back changed."},
+    {t:"The Memphis Belle",y:1944,c:"US",k:"D",g:"A2",lg:["English"],n:"Wyler filmed a real mission from inside a real B-17. Men in this footage died making it."},
+    {t:"The Battle of Midway",y:1942,c:"US",k:"D",g:"A2",lg:["English"],n:"Ford shot it himself on the island and was wounded doing so. Eighteen minutes, in colour."},
+    {t:"Atomic People",y:2024,c:"GB",k:"D",g:"A2",lg:["English","Japanese"],n:"The last surviving hibakusha of Hiroshima and Nagasaki, filmed at the eightieth anniversary."},
+    {t:"Apocalypse: The Second World War",y:2009,c:"FR",k:"D",g:"B1",lg:["French"],n:"Archive footage colourised throughout, which is either a way in or a distraction depending on your view."},
+    {t:"Un village français",y:2009,c:"FR",k:"S",g:"A1",lg:["French","German"],n:"Seventy-two episodes in one occupied town from June 1940 to the reckoning after. The most complete account of occupation anyone has filmed."},
+    {t:"World on Fire",y:2019,c:"GB",k:"S",g:"B1",lg:["English","German","Polish","French"],n:"Interlocking lives across Britain, Poland, France and Germany. Ambitious and uneven."},
+    {t:"War and Remembrance",y:1988,c:"US",k:"S",g:"B1",lg:["English"],n:"The sequel to The Winds of War, and the first drama permitted to film at Auschwitz."},
+    {t:"Holocaust",y:1978,c:"US",k:"S",g:"B1",lg:["English"],n:"Crude by later standards, but its 1979 broadcast in West Germany forced a national conversation that scholarship had not managed."},
+    {t:"Hogan's Heroes",y:1965,c:"US",k:"S",g:"C3",lg:["English"],n:"A POW camp sitcom. Several of its German-accented cast were Jewish refugees, which is a stranger fact than the show itself."},
+    {t:"'Allo 'Allo!",y:1982,c:"GB",k:"S",g:"C3",lg:["English"],n:"Farce, and specifically a parody of Secret Army above."},
+    {t:"World War II with Tom Hanks",y:2026,c:"US",k:"D",g:"B1",lg:["English"],n:"Twenty-plus episodes of restored archive, aiming squarely at The World at War's crown."}
+  ]
+}
+];
+
+const KINDNAME = {F:"Film", S:"Serial", D:"Factual"};
+const idx = document.getElementById("index");
+const tally = document.getElementById("tally");
+
+function imdb(t,y){
+  return "https://www.imdb.com/find/?q=" + encodeURIComponent(t + " " + y);
+}
+function esc(s){
+  return String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+}
+
+function build(){
+  idx.innerHTML = PARTS.map((p,pi)=>`
+    <section class="part" data-part="${pi}">
+      <div class="part-head">
+        <div class="part-no">${esc(p.no)}</div>
+        <h2 class="part-title">${esc(p.title)}</h2>
+        <p class="part-ctx">${esc(p.ctx)}</p>
+      </div>
+      <div class="part-body">
+        ${p.items.map(it=>`
+          <div class="entry" data-kind="${it.k}" data-lg="${esc((it.lg||[]).join("|"))}" data-year="${it.y}" data-rate="${typeof it.r==="number"?it.r:""}"
+               data-hay="${esc((it.t+" "+(it.o||"")+" "+it.n+" "+(it.w||"")+" "+it.c+" "+it.y+" "+(it.lg||[]).join(" ")).toLowerCase())}">
+            <div class="e-grade"><span class="gr ${it.g.toLowerCase()}">${it.g}</span></div>
+            <div class="e-main">
+              <a href="${imdb(it.t,it.y)}" target="_blank" rel="noopener">${esc(it.t)}</a>
+              ${it.o?` <span class="e-orig">${esc(it.o)}</span>`:""}
+              <span class="e-meta">· ${it.y} · ${it.c}${it.r?` · <b class="e-rate">${it.r}</b>`:""}</span>
+              <span class="tag ${it.k==="S"?"serial":it.k==="D"?"doc":""}">${KINDNAME[it.k]}</span>
+              <div class="e-note">${esc(it.n)}</div>
+              ${it.w?`<div class="e-caveat"><span class="caveat">Caveat</span>${esc(it.w)}</div>`:""}
+            </div>
+          </div>`).join("")}
+      </div>
+    </section>`).join("") + `<div class="empty" id="empty" hidden>Nothing on file matches that. Try a shorter term, or clear the filters.</div>`;
+}
+
+const state = {kind:"all", year:"all"};
+const langs = new Set();          // empty = no language restriction
+let fQ = "", minRate = null;
+
+/* Language buttons are built from the data, so adding a title in a new
+   tongue makes its button appear with no other change. */
+function buildLangButtons(){
+  const count = {};
+  PARTS.forEach(p=>p.items.forEach(it=>(it.lg||[]).forEach(L=>count[L]=(count[L]||0)+1)));
+  const order = Object.keys(count).sort((a,b)=>count[b]-count[a] || a.localeCompare(b));
+  document.getElementById("langButtons").innerHTML = order.map(L=>
+    `<button class="chk" data-lang="${esc(L)}" aria-pressed="false" title="${count[L]} titles">${esc(L)}</button>`
+  ).join("");
+
+  document.querySelectorAll("#langButtons .chk").forEach(btn=>{
+    btn.addEventListener("click",()=>{
+      const L = btn.dataset.lang;
+      if(langs.has(L)) langs.delete(L); else langs.add(L);
+      btn.setAttribute("aria-pressed", String(langs.has(L)));
+      document.querySelector("[data-langall]").setAttribute("aria-pressed", String(langs.size===0));
+      apply(); revealResults();
+    });
+  });
+  document.querySelector("[data-langall]").addEventListener("click",()=>{
+    langs.clear();
+    document.querySelectorAll("#langButtons .chk").forEach(o=>o.setAttribute("aria-pressed","false"));
+    document.querySelector("[data-langall]").setAttribute("aria-pressed","true");
+    apply(); revealResults();
+  });
+}
+
+function apply(){
+  let shown=0;
+  document.querySelectorAll(".part").forEach(part=>{
+    let visible=0;
+    part.querySelectorAll(".entry").forEach(e=>{
+      const entryLangs = e.dataset.lg ? e.dataset.lg.split("|") : [];
+      const rating = e.dataset.rate === "" ? null : parseFloat(e.dataset.rate);
+      const ok =
+        (state.kind==="all" || e.dataset.kind===state.kind) &&
+        (langs.size===0 || entryLangs.some(L=>langs.has(L))) &&
+        (state.year==="all" || +e.dataset.year >= +state.year) &&
+        (minRate===null || (rating!==null && rating >= minRate)) &&
+        (fQ==="" || e.dataset.hay.includes(fQ));
+      e.hidden=!ok;
+      if(ok){visible++;shown++;}
+    });
+    part.hidden = visible===0;
+  });
+  document.getElementById("empty").hidden = shown>0;
+  tally.textContent = shown + (shown===1?" title on file":" titles on file");
+}
+
+build();
+buildLangButtons();
+
+/* The rating filter only means anything once ratings have been loaded. */
+const rateInput = document.getElementById("minRate");
+const haveRatings = PARTS.some(p=>p.items.some(it=>typeof it.r === "number"));
+if(!haveRatings){
+  rateInput.disabled = true;
+  document.getElementById("rateHint").hidden = false;
+}
+rateInput.addEventListener("input",()=>{
+  const v = parseFloat(rateInput.value);
+  minRate = rateInput.value === "" || isNaN(v) ? null : v;
+  document.getElementById("clearRate").hidden = minRate===null;
+  apply();
+});
+document.getElementById("clearRate").addEventListener("click",()=>{
+  rateInput.value=""; minRate=null;
+  document.getElementById("clearRate").hidden = true;
+  apply(); revealResults();
+});
+
+apply();
+
+document.querySelectorAll(".chk[data-group]").forEach(b=>{
+  b.addEventListener("click",()=>{
+    const group = b.dataset.group;
+    document.querySelectorAll(`.chk[data-group="${group}"]`)
+      .forEach(o=>o.setAttribute("aria-pressed", o===b));
+    state[group] = b.dataset.val;
+    apply();
+    revealResults();
+  });
+});
+
+/* The index is very long. Filtering while scrolled deep into it leaves you
+   stranded below the remaining rows, which reads as "nothing happened".
+   Bring the filter bar back into view whenever the result set changes. */
+function revealResults(){
+  const nav = document.querySelector(".controls");
+  const target = nav.getBoundingClientRect().top + window.scrollY - 6;
+  if(window.scrollY > target){
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.scrollTo({top:target, behavior: reduce ? "auto" : "smooth"});
+  }
+}
+document.getElementById("q").addEventListener("input",e=>{
+  fQ=e.target.value.trim().toLowerCase();
+  apply();
+});
+</script>
+</body>
+</html>
