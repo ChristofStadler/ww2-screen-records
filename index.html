@@ -185,7 +185,7 @@ h1{
 .part-body{padding-top:8px}
 
 .entry{
-  display:grid;grid-template-columns:44px 1fr;gap:0 12px;
+  display:grid;grid-template-columns:44px 46px 1fr;gap:0 12px;
   padding:7px 6px 7px 0;border-bottom:1px dotted var(--rule-soft);
   align-items:start;
 }
@@ -193,6 +193,31 @@ h1{
 /* the hidden attribute must beat .entry{display:grid} and .part display */
 .entry[hidden],.part[hidden],.empty[hidden]{display:none!important}
 .e-grade{padding-top:2px}
+
+/* Poster plate. Images are inline data URIs written by update_ratings.py,
+   so the sheet still opens from file:// with the network off. Anything the
+   script could not resolve falls back to an empty plate rather than a gap. */
+.e-plate{
+  width:46px;aspect-ratio:2/3;margin-top:2px;
+  border:1px solid var(--rule);background:var(--paper2);
+  overflow:hidden;position:relative;
+}
+.e-plate img{
+  width:100%;height:100%;object-fit:cover;display:block;
+  filter:saturate(.72) contrast(.94) sepia(.14);
+}
+.e-plate.empty-plate{
+  border-style:dashed;border-color:var(--rule-soft);
+  background-image:linear-gradient(
+    to bottom right,transparent calc(50% - .5px),
+    var(--rule-soft) calc(50% - .5px),var(--rule-soft) calc(50% + .5px),
+    transparent calc(50% + .5px));
+}
+@media (max-width:640px){.e-plate{width:40px}}
+/* No posters fetched yet — drop the column rather than show 212 blank plates */
+.no-plates .entry{grid-template-columns:44px 1fr}
+.no-plates .e-plate{display:none}
+@media (max-width:640px){.no-plates .entry{grid-template-columns:38px 1fr}}
 .e-main a{
   color:var(--ink);text-decoration:none;font-weight:700;
   letter-spacing:.02em;border-bottom:1px solid rgba(36,31,24,.3);
@@ -201,6 +226,16 @@ h1{
 .e-main a:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
 .e-orig{font-style:italic;color:var(--ink2);font-weight:400}
 .e-meta{font-size:11px;color:var(--ink3);letter-spacing:.08em;white-space:nowrap}
+/* Origin flag. The sprite is hidden with size 0 rather than display:none —
+   display:none would stop <use> resolving in some browsers. */
+.flag-sprite{position:absolute;width:0;height:0;overflow:hidden}
+.e-cc{white-space:nowrap}
+.flag{
+  width:15px;height:10px;vertical-align:-1px;margin-right:4px;
+  border:1px solid rgba(36,31,24,.42);
+  filter:saturate(.82);
+}
+.key-note .flag{margin:0 3px 0 0}
 .e-rate{color:var(--blue);font-weight:700;letter-spacing:.04em}
 .e-rate::after{content:"/10";font-weight:400;color:var(--ink3)}
 .e-note{font-size:12px;color:var(--ink2);margin-top:1px;line-height:1.5}
@@ -235,7 +270,7 @@ h1{
   .stamp{position:static;display:inline-block;margin:6px 0 16px;transform:rotate(-3deg)}
   .brk{display:none}
   @keyframes thump{from{transform:rotate(-3deg) scale(2);opacity:0}to{transform:rotate(-3deg) scale(1);opacity:.82}}
-  .entry{grid-template-columns:38px 1fr;gap:0 8px}
+  .entry{grid-template-columns:38px 40px 1fr;gap:0 8px}
 }
 @media (prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important}
@@ -250,6 +285,30 @@ h1{
 </style>
 </head>
 <body>
+<!-- Flag sprite: every origin flag, drawn once, referenced by <use>.
+     Kept inline so the sheet still renders from file:// with no network. -->
+<svg class="flag-sprite" aria-hidden="true" focusable="false"><defs>
+<symbol id="fl-GB" viewBox="0 0 60 40"><rect width="60" height="40" fill="#012169"/><path d="M0 0 60 40M60 0 0 40" stroke="#fff" stroke-width="9"/><path d="M0 0 60 40M60 0 0 40" stroke="#C8102E" stroke-width="4"/><path d="M30 0V40M0 20H60" stroke="#fff" stroke-width="13"/><path d="M30 0V40M0 20H60" stroke="#C8102E" stroke-width="8"/></symbol>
+<symbol id="fl-US" viewBox="0 0 60 40"><rect width="60" height="40" fill="#fff"/><rect y="0.000" width="60" height="3.077" fill="#B22234"/><rect y="6.154" width="60" height="3.077" fill="#B22234"/><rect y="12.308" width="60" height="3.077" fill="#B22234"/><rect y="18.462" width="60" height="3.077" fill="#B22234"/><rect y="24.616" width="60" height="3.077" fill="#B22234"/><rect y="30.770" width="60" height="3.077" fill="#B22234"/><rect y="36.924" width="60" height="3.077" fill="#B22234"/><rect width="24" height="21.54" fill="#3C3B6E"/><g fill="#fff"><circle cx="2.40" cy="2.70" r="1"/><circle cx="7.20" cy="2.70" r="1"/><circle cx="12.00" cy="2.70" r="1"/><circle cx="16.80" cy="2.70" r="1"/><circle cx="21.60" cy="2.70" r="1"/><circle cx="2.40" cy="8.08" r="1"/><circle cx="7.20" cy="8.08" r="1"/><circle cx="12.00" cy="8.08" r="1"/><circle cx="16.80" cy="8.08" r="1"/><circle cx="21.60" cy="8.08" r="1"/><circle cx="2.40" cy="13.46" r="1"/><circle cx="7.20" cy="13.46" r="1"/><circle cx="12.00" cy="13.46" r="1"/><circle cx="16.80" cy="13.46" r="1"/><circle cx="21.60" cy="13.46" r="1"/><circle cx="2.40" cy="18.84" r="1"/><circle cx="7.20" cy="18.84" r="1"/><circle cx="12.00" cy="18.84" r="1"/><circle cx="16.80" cy="18.84" r="1"/><circle cx="21.60" cy="18.84" r="1"/></g></symbol>
+<symbol id="fl-SU" viewBox="0 0 60 40"><rect width="60" height="40" fill="#CE1126"/><path transform="translate(13 9) scale(4.4)" d="M0 -1 L.2245 -.309 L.951 -.309 L.363 .118 L.588 .809 L0 .382 L-.588 .809 L-.363 .118 L-.951 -.309 L-.2245 -.309 Z" fill="#FFD700"/><g stroke="#FFD700" stroke-width="2.6" fill="none" stroke-linecap="round"><path d="M9 27a10 10 0 0 1 12-9"/><path d="M9.5 17.5 20.5 28.5"/></g><path d="M7.6 15.4 12 19.8l-2.2 2.2-4.4-4.4z" fill="#FFD700"/></symbol>
+<symbol id="fl-RU" viewBox="0 0 60 40"><rect y="0.000" width="60" height="13.343" fill="#fff"/><rect y="13.333" width="60" height="13.343" fill="#0039A6"/><rect y="26.667" width="60" height="13.343" fill="#D52B1E"/></symbol>
+<symbol id="fl-DE" viewBox="0 0 60 40"><rect y="0.000" width="60" height="13.343" fill="#000"/><rect y="13.333" width="60" height="13.343" fill="#DD0000"/><rect y="26.667" width="60" height="13.343" fill="#FFCE00"/></symbol>
+<symbol id="fl-JP" viewBox="0 0 60 40"><rect width="60" height="40" fill="#fff"/><circle cx="30" cy="20" r="12" fill="#BC002D"/></symbol>
+<symbol id="fl-PL" viewBox="0 0 60 40"><rect y="0.000" width="60" height="20.010" fill="#fff"/><rect y="20.000" width="60" height="20.010" fill="#DC143C"/></symbol>
+<symbol id="fl-FR" viewBox="0 0 60 40"><rect x="0.000" width="20.010" height="40" fill="#002395"/><rect x="20.000" width="20.010" height="40" fill="#fff"/><rect x="40.000" width="20.010" height="40" fill="#ED2939"/></symbol>
+<symbol id="fl-IT" viewBox="0 0 60 40"><rect x="0.000" width="20.010" height="40" fill="#009246"/><rect x="20.000" width="20.010" height="40" fill="#fff"/><rect x="40.000" width="20.010" height="40" fill="#CE2B37"/></symbol>
+<symbol id="fl-CZ" viewBox="0 0 60 40"><rect width="60" height="20" fill="#fff"/><rect y="20" width="60" height="20" fill="#D7141A"/><path d="M0 0 26 20 0 40Z" fill="#11457E"/></symbol>
+<symbol id="fl-HU" viewBox="0 0 60 40"><rect y="0.000" width="60" height="13.343" fill="#CE2939"/><rect y="13.333" width="60" height="13.343" fill="#fff"/><rect y="26.667" width="60" height="13.343" fill="#477050"/></symbol>
+<symbol id="fl-DK" viewBox="0 0 60 40"><rect width="60" height="40" fill="#C8102E"/><path d="M21 0V40M0 20H60" stroke="#fff" stroke-width="9"/></symbol>
+<symbol id="fl-NO" viewBox="0 0 60 40"><rect width="60" height="40" fill="#BA0C2F"/><path d="M21 0V40M0 20H60" stroke="#fff" stroke-width="10"/><path d="M21 0V40M0 20H60" stroke="#00205B" stroke-width="5"/></symbol>
+<symbol id="fl-FI" viewBox="0 0 60 40"><rect width="60" height="40" fill="#fff"/><path d="M21 0V40M0 20H60" stroke="#003580" stroke-width="9"/></symbol>
+<symbol id="fl-NL" viewBox="0 0 60 40"><rect y="0.000" width="60" height="13.343" fill="#AE1C28"/><rect y="13.333" width="60" height="13.343" fill="#fff"/><rect y="26.667" width="60" height="13.343" fill="#21468B"/></symbol>
+<symbol id="fl-CN" viewBox="0 0 60 40"><rect width="60" height="40" fill="#DE2910"/><path transform="translate(11 11) scale(6.5)" d="M0 -1 L.2245 -.309 L.951 -.309 L.363 .118 L.588 .809 L0 .382 L-.588 .809 L-.363 .118 L-.951 -.309 L-.2245 -.309 Z" fill="#FFDE00"/><path transform="translate(21 4) scale(2.4)" d="M0 -1 L.2245 -.309 L.951 -.309 L.363 .118 L.588 .809 L0 .382 L-.588 .809 L-.363 .118 L-.951 -.309 L-.2245 -.309 Z" fill="#FFDE00"/><path transform="translate(26 9) scale(2.4)" d="M0 -1 L.2245 -.309 L.951 -.309 L.363 .118 L.588 .809 L0 .382 L-.588 .809 L-.363 .118 L-.951 -.309 L-.2245 -.309 Z" fill="#FFDE00"/><path transform="translate(26 16) scale(2.4)" d="M0 -1 L.2245 -.309 L.951 -.309 L.363 .118 L.588 .809 L0 .382 L-.588 .809 L-.363 .118 L-.951 -.309 L-.2245 -.309 Z" fill="#FFDE00"/><path transform="translate(21 21) scale(2.4)" d="M0 -1 L.2245 -.309 L.951 -.309 L.363 .118 L.588 .809 L0 .382 L-.588 .809 L-.363 .118 L-.951 -.309 L-.2245 -.309 Z" fill="#FFDE00"/></symbol>
+<symbol id="fl-YU" viewBox="0 0 60 40"><rect y="0.000" width="60" height="13.343" fill="#003893"/><rect y="13.333" width="60" height="13.343" fill="#fff"/><rect y="26.667" width="60" height="13.343" fill="#D52B1E"/><path transform="translate(30 20) scale(8)" d="M0 -1 L.2245 -.309 L.951 -.309 L.363 .118 L.588 .809 L0 .382 L-.588 .809 L-.363 .118 L-.951 -.309 L-.2245 -.309 Z" fill="#D52B1E" stroke="#FFCE00" stroke-width=".07"/></symbol>
+<symbol id="fl-AU" viewBox="0 0 60 40"><rect width="60" height="40" fill="#00247D"/><use href="#fl-GB" width="30" height="20"/><path transform="translate(15 30) scale(4)" d="M0 -1 L.2245 -.309 L.951 -.309 L.363 .118 L.588 .809 L0 .382 L-.588 .809 L-.363 .118 L-.951 -.309 L-.2245 -.309 Z" fill="#fff"/><path transform="translate(48 8) scale(2.6)" d="M0 -1 L.2245 -.309 L.951 -.309 L.363 .118 L.588 .809 L0 .382 L-.588 .809 L-.363 .118 L-.951 -.309 L-.2245 -.309 Z" fill="#fff"/><path transform="translate(53 19) scale(2.6)" d="M0 -1 L.2245 -.309 L.951 -.309 L.363 .118 L.588 .809 L0 .382 L-.588 .809 L-.363 .118 L-.951 -.309 L-.2245 -.309 Z" fill="#fff"/><path transform="translate(44 22) scale(2.6)" d="M0 -1 L.2245 -.309 L.951 -.309 L.363 .118 L.588 .809 L0 .382 L-.588 .809 L-.363 .118 L-.951 -.309 L-.2245 -.309 Z" fill="#fff"/><path transform="translate(48 32) scale(3)" d="M0 -1 L.2245 -.309 L.951 -.309 L.363 .118 L.588 .809 L0 .382 L-.588 .809 L-.363 .118 L-.951 -.309 L-.2245 -.309 Z" fill="#fff"/><path transform="translate(40 14) scale(1.6)" d="M0 -1 L.2245 -.309 L.951 -.309 L.363 .118 L.588 .809 L0 .382 L-.588 .809 L-.363 .118 L-.951 -.309 L-.2245 -.309 Z" fill="#fff"/></symbol>
+<symbol id="fl-NZ" viewBox="0 0 60 40"><rect width="60" height="40" fill="#00247D"/><use href="#fl-GB" width="30" height="20"/><path transform="translate(48 9) scale(3)" d="M0 -1 L.2245 -.309 L.951 -.309 L.363 .118 L.588 .809 L0 .382 L-.588 .809 L-.363 .118 L-.951 -.309 L-.2245 -.309 Z" fill="#CC142B" stroke="#fff" stroke-width=".16"/><path transform="translate(53 21) scale(3)" d="M0 -1 L.2245 -.309 L.951 -.309 L.363 .118 L.588 .809 L0 .382 L-.588 .809 L-.363 .118 L-.951 -.309 L-.2245 -.309 Z" fill="#CC142B" stroke="#fff" stroke-width=".16"/><path transform="translate(42 24) scale(3)" d="M0 -1 L.2245 -.309 L.951 -.309 L.363 .118 L.588 .809 L0 .382 L-.588 .809 L-.363 .118 L-.951 -.309 L-.2245 -.309 Z" fill="#CC142B" stroke="#fff" stroke-width=".16"/><path transform="translate(48 33) scale(3)" d="M0 -1 L.2245 -.309 L.951 -.309 L.363 .118 L.588 .809 L0 .382 L-.588 .809 L-.363 .118 L-.951 -.309 L-.2245 -.309 Z" fill="#CC142B" stroke="#fff" stroke-width=".16"/></symbol>
+<symbol id="fl-CA" viewBox="0 0 60 40"><rect width="60" height="40" fill="#fff"/><rect width="15" height="40" fill="#FF0000"/><rect x="45" width="15" height="40" fill="#FF0000"/><path d="M30 10l1.6 4.2 4.4-1-1.2 4.2 4.6.6-3.4 3 5.4 2.6-6 1.4.8 3.4-5.4-.8.6 6.4-2.4-2.6-2.4 2.6.6-6.4-5.4.8.8-3.4-6-1.4 5.4-2.6-3.4-3 4.6-.6-1.2-4.2 4.4 1z" fill="#FF0000"/></symbol>
+</defs></svg>
 <main class="sheet">
 
   <div class="class-bar top">MOST SECRET</div>
@@ -296,7 +355,7 @@ h1{
       <div class="key-row"><span class="gr c3">C3</span><span>Entertainment first. Enjoyable, but do not learn your history here.</span></div>
     </div>
     <p class="key-note">
-      Gradings follow the Admiralty pattern — a letter for the reliability of the source, a figure for the credibility of the report. Origin is given by country code: <b>GB</b> Britain · <b>US</b> United States · <b>SU</b> Soviet Union · <b>RU</b> Russia · <b>DE</b> Germany · <b>JP</b> Japan · <b>PL</b> Poland · <b>FR</b> France · <b>IT</b> Italy · <b>CZ</b> Czechoslovakia · <b>HU</b> Hungary · <b>DK</b> Denmark · <b>NO</b> Norway · <b>FI</b> Finland · <b>NL</b> Netherlands · <b>CN</b> China · <b>YU</b> Yugoslavia · <b>AU</b> Australia · <b>NZ</b> New Zealand · <b>CA</b> Canada. Every title links to its IMDb entry.
+      Gradings follow the Admiralty pattern — a letter for the reliability of the source, a figure for the credibility of the report. Origin is given by country code: <svg class="flag" viewBox="0 0 60 40" aria-hidden="true" focusable="false"><use href="#fl-GB"/></svg><b>GB</b> Britain · <svg class="flag" viewBox="0 0 60 40" aria-hidden="true" focusable="false"><use href="#fl-US"/></svg><b>US</b> United States · <svg class="flag" viewBox="0 0 60 40" aria-hidden="true" focusable="false"><use href="#fl-SU"/></svg><b>SU</b> Soviet Union · <svg class="flag" viewBox="0 0 60 40" aria-hidden="true" focusable="false"><use href="#fl-RU"/></svg><b>RU</b> Russia · <svg class="flag" viewBox="0 0 60 40" aria-hidden="true" focusable="false"><use href="#fl-DE"/></svg><b>DE</b> Germany · <svg class="flag" viewBox="0 0 60 40" aria-hidden="true" focusable="false"><use href="#fl-JP"/></svg><b>JP</b> Japan · <svg class="flag" viewBox="0 0 60 40" aria-hidden="true" focusable="false"><use href="#fl-PL"/></svg><b>PL</b> Poland · <svg class="flag" viewBox="0 0 60 40" aria-hidden="true" focusable="false"><use href="#fl-FR"/></svg><b>FR</b> France · <svg class="flag" viewBox="0 0 60 40" aria-hidden="true" focusable="false"><use href="#fl-IT"/></svg><b>IT</b> Italy · <svg class="flag" viewBox="0 0 60 40" aria-hidden="true" focusable="false"><use href="#fl-CZ"/></svg><b>CZ</b> Czechoslovakia · <svg class="flag" viewBox="0 0 60 40" aria-hidden="true" focusable="false"><use href="#fl-HU"/></svg><b>HU</b> Hungary · <svg class="flag" viewBox="0 0 60 40" aria-hidden="true" focusable="false"><use href="#fl-DK"/></svg><b>DK</b> Denmark · <svg class="flag" viewBox="0 0 60 40" aria-hidden="true" focusable="false"><use href="#fl-NO"/></svg><b>NO</b> Norway · <svg class="flag" viewBox="0 0 60 40" aria-hidden="true" focusable="false"><use href="#fl-FI"/></svg><b>FI</b> Finland · <svg class="flag" viewBox="0 0 60 40" aria-hidden="true" focusable="false"><use href="#fl-NL"/></svg><b>NL</b> Netherlands · <svg class="flag" viewBox="0 0 60 40" aria-hidden="true" focusable="false"><use href="#fl-CN"/></svg><b>CN</b> China · <svg class="flag" viewBox="0 0 60 40" aria-hidden="true" focusable="false"><use href="#fl-YU"/></svg><b>YU</b> Yugoslavia · <svg class="flag" viewBox="0 0 60 40" aria-hidden="true" focusable="false"><use href="#fl-AU"/></svg><b>AU</b> Australia · <svg class="flag" viewBox="0 0 60 40" aria-hidden="true" focusable="false"><use href="#fl-NZ"/></svg><b>NZ</b> New Zealand · <svg class="flag" viewBox="0 0 60 40" aria-hidden="true" focusable="false"><use href="#fl-CA"/></svg><b>CA</b> Canada. Every title links to its IMDb entry.
     </p>
   </section>
 
@@ -363,6 +422,10 @@ h1{
 <script>
 /* Each entry: t title · o original title · y year · c country · k form (F/S/D)
    g grade · n note · w caveat · l language (en / fl) */
+/* Poster plates, keyed "title|year" — written by update_ratings.py from
+   TMDb's w92 thumbnails. Do not hand-edit; regenerate with the script. */
+const POSTERS = {};
+
 const PARTS = [
 {
   no:"Part I", title:"Prelude · 1931–1939",
@@ -645,11 +708,31 @@ const tally = document.getElementById("tally");
 function imdb(t,y){
   return "https://www.imdb.com/find/?q=" + encodeURIComponent(t + " " + y);
 }
+/* Country codes carry a flag from the inline sprite at the top of <body>.
+   The code itself stays visible, so the flag is decorative — hidden from
+   assistive tech, with the full country name on the wrapper's title. */
+const COUNTRY = {GB:"Britain", US:"United States", SU:"Soviet Union", RU:"Russia", DE:"Germany", JP:"Japan", PL:"Poland", FR:"France", IT:"Italy", CZ:"Czechoslovakia", HU:"Hungary", DK:"Denmark", NO:"Norway", FI:"Finland", NL:"Netherlands", CN:"China", YU:"Yugoslavia", AU:"Australia", NZ:"New Zealand", CA:"Canada"};
+function flag(c){
+  return COUNTRY[c]
+    ? `<svg class="flag" viewBox="0 0 60 40" aria-hidden="true" focusable="false"><use href="#fl-${c}"/></svg>`
+    : "";
+}
+
+/* Poster plates live in POSTERS, keyed "title|year", so entry lines stay
+   readable. The block is regenerated wholesale by update_ratings.py. */
+function plate(it){
+  const src = POSTERS[it.t + "|" + it.y];
+  return src
+    ? `<div class="e-plate"><img src="${src}" alt="" loading="lazy" decoding="async"></div>`
+    : `<div class="e-plate empty-plate" title="No plate held"></div>`;
+}
+
 function esc(s){
   return String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 }
 
 function build(){
+  idx.classList.toggle("no-plates", Object.keys(POSTERS).length === 0);
   idx.innerHTML = PARTS.map((p,pi)=>`
     <section class="part" data-part="${pi}">
       <div class="part-head">
@@ -662,10 +745,11 @@ function build(){
           <div class="entry" data-kind="${it.k}" data-lg="${esc((it.lg||[]).join("|"))}" data-year="${it.y}" data-rate="${typeof it.r==="number"?it.r:""}"
                data-hay="${esc((it.t+" "+(it.o||"")+" "+it.n+" "+(it.w||"")+" "+it.c+" "+it.y+" "+(it.lg||[]).join(" ")).toLowerCase())}">
             <div class="e-grade"><span class="gr ${it.g.toLowerCase()}">${it.g}</span></div>
+            ${plate(it)}
             <div class="e-main">
               <a href="${imdb(it.t,it.y)}" target="_blank" rel="noopener">${esc(it.t)}</a>
               ${it.o?` <span class="e-orig">${esc(it.o)}</span>`:""}
-              <span class="e-meta">· ${it.y} · ${it.c}${it.r?` · <b class="e-rate">${it.r}</b>`:""}</span>
+              <span class="e-meta">· ${it.y} · <span class="e-cc"${COUNTRY[it.c]?` title="${esc(COUNTRY[it.c])}"`:""}>${flag(it.c)}${it.c}</span>${it.r?` · <b class="e-rate">${it.r}</b>`:""}</span>
               <span class="tag ${it.k==="S"?"serial":it.k==="D"?"doc":""}">${KINDNAME[it.k]}</span>
               <div class="e-note">${esc(it.n)}</div>
               ${it.w?`<div class="e-caveat"><span class="caveat">Caveat</span>${esc(it.w)}</div>`:""}
