@@ -1,5 +1,7 @@
 # Screen Records of the Late War, 1931–1949
 
+**[Read it here → christofstadler.github.io/ww2-screen-records](https://christofstadler.github.io/ww2-screen-records/)**
+
 A graded index of 212 Second World War films, television serials and documentaries,
 arranged by **the period of history they depict** rather than the year they were released.
 Styled as a declassified War Department registry sheet.
@@ -10,6 +12,8 @@ Styled as a declassified War Department registry sheet.
 - **19 countries**, with roughly 45% subtitled — Soviet, German, Japanese, Polish,
   French, Italian, Nordic, Dutch and Chinese cinema alongside the Anglo-American canon
 - **Gradings** on the Admiralty pattern (A1 essential → C3 entertainment only)
+- **Origin flags** beside each country code, drawn inline so nothing is fetched
+- **Poster plates** beside each entry, inlined as data URIs (see below)
 - **Caveat flags** on 14 titles that mislead on a specific point of record, with the reason given
 - Filter by form (film / serial / factual), by language, by decade of release
   (1950+ through 2000+), and by free-text search — the filters combine
@@ -26,8 +30,9 @@ python3 -m http.server 8000
 
 ## Publishing
 
-Hosted with GitHub Pages from the repository root. In **Settings → Pages**, set the
-source to the `main` branch and the `/ (root)` folder.
+Hosted with GitHub Pages from the repository root at
+<https://christofstadler.github.io/ww2-screen-records/>. In **Settings → Pages**, set
+the source to the `main` branch and the `/ (root)` folder.
 
 ## IMDb ratings
 
@@ -37,8 +42,9 @@ ratings into `index.html` from IMDb's own published dataset, and commits the
 result. It re-runs monthly so the figures stay current, and you can trigger it
 by hand from the **Actions** tab at any time.
 
-The Action needs no secrets — it uses the built-in `GITHUB_TOKEN`. Pushes made
-with that token don't trigger workflows, so it can't loop.
+Ratings need no secrets — that pass uses the built-in `GITHUB_TOKEN`. Pushes made
+with that token don't trigger workflows, so it can't loop. **Posters do need one**,
+covered in the next section.
 
 To do the same thing locally instead:
 
@@ -58,6 +64,26 @@ confidently is listed at the end so you can fill it in by hand.
 The dumps land in `.imdb-cache/`, which is already gitignored. Anything the
 matcher can't resolve is listed in the run log with a search link; pin those by
 IMDb id in the `MANUAL` table at the top of the script.
+
+## Poster plates
+
+Posters are optional and off until you add a key. IMDb's published dataset carries
+no images, so they come from [TMDb](https://developer.themoviedb.org/docs/getting-started),
+matched on the IMDb id the ratings pass has already resolved.
+
+Add your TMDb key as a repository secret named `TMDB_API_KEY` under
+**Settings → Secrets and variables → Actions**, then re-run the workflow from the
+**Actions** tab. The script fetches TMDb's `w92` thumbnails — already thumbnail
+sized, so nothing is resized locally and no packages are needed — and writes them
+into the `POSTERS` block in `index.html` as inline data URIs. The page stays a
+single file that opens from `file://` with the network off.
+
+Until the secret exists the plate column collapses itself rather than showing rows
+of empty boxes, so the page looks exactly as it did before. Expect `index.html` to
+grow to roughly 1 MB once the plates are in, and the page to get about half as long
+again. Posters are cached in `.imdb-cache/posters/`, so re-runs are quick.
+
+Don't hand-edit `POSTERS` — like `r`, it's regenerated wholesale by the script.
 
 ## Editing the list
 
