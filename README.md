@@ -2,18 +2,18 @@
 
 **[Read it here → christofstadler.github.io/ww2-screen-records](https://christofstadler.github.io/ww2-screen-records/)**
 
-A graded index of 212 Second World War films, television serials and documentaries,
+A graded index of 214 Second World War films, television serials and documentaries,
 arranged by **the period of history they depict** rather than the year they were released.
 Styled as a declassified War Department registry sheet.
 
 ## What's in it
 
-- **212 titles** across ten parts, from the 1937 war in China to the trials and rubble of 1949
+- **214 titles** across ten parts, from the 1937 war in China to the trials and rubble of 1949
 - **19 countries**, with roughly 45% subtitled — Soviet, German, Japanese, Polish,
   French, Italian, Nordic, Dutch and Chinese cinema alongside the Anglo-American canon
 - **Gradings** on the Admiralty pattern (A1 essential → C3 entertainment only)
 - **Origin flags** beside each country code, drawn inline so nothing is fetched
-- **Poster plates** beside each entry, inlined as data URIs (see below)
+- **Poster plates** beside each entry, which grow to 3× on hover (see below)
 - **Caveat flags** on 14 titles that mislead on a specific point of record, with the reason given
 - Filter by form (film / serial / factual), by language, by decade of release
   (1950+ through 2000+), and by free-text search — the filters combine
@@ -21,8 +21,9 @@ Styled as a declassified War Department registry sheet.
 
 ## Running it
 
-It's a single self-contained HTML file with no build step, no dependencies and no
-external requests. Open `index.html` in a browser, or serve the folder:
+No build step, no dependencies and no third-party requests. `index.html` holds
+the markup, styling and data; the poster images sit beside it in `posters/`.
+Open `index.html` in a browser, or serve the folder:
 
 ```
 python3 -m http.server 8000
@@ -73,17 +74,22 @@ matched on the IMDb id the ratings pass has already resolved.
 
 Add your TMDb key as a repository secret named `TMDB_API_KEY` under
 **Settings → Secrets and variables → Actions**, then re-run the workflow from the
-**Actions** tab. The script fetches TMDb's `w92` thumbnails — already thumbnail
-sized, so nothing is resized locally and no packages are needed — and writes them
-into the `POSTERS` block in `index.html` as inline data URIs. The page stays a
-single file that opens from `file://` with the network off.
+**Actions** tab. The script downloads TMDb's `w342` renditions into `posters/`,
+one `<imdb-id>.jpg` per title, and writes relative paths to them into the
+`POSTERS` block in `index.html`. TMDb serves the size we want, so nothing is
+resized locally and no packages are needed.
+
+The images live beside the page rather than inside it. That keeps `index.html`
+under 100 KB and means a browser only fetches the plates that scroll into view —
+inlining them at this resolution would have cost several megabytes on every load.
+The page still opens from `file://` with the network off, so long as `posters/`
+is sitting next to it.
 
 Until the secret exists the plate column collapses itself rather than showing rows
-of empty boxes, so the page looks exactly as it did before. Expect `index.html` to
-grow to roughly 1 MB once the plates are in, and the page to get about half as long
-again. Posters are cached in `.imdb-cache/posters/`, so re-runs are quick.
+of empty boxes, so the page looks exactly as it did before.
 
-Don't hand-edit `POSTERS` — like `r`, it's regenerated wholesale by the script.
+Don't hand-edit `POSTERS` — like `r`, it's regenerated wholesale by the script,
+which also deletes posters for titles you've removed from the list.
 
 ## Editing the list
 

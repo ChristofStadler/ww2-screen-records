@@ -5,20 +5,25 @@ update_ratings.py — fill real IMDb ratings and poster plates into index.html
 Downloads IMDb's own published dataset (https://developer.imdb.com/non-commercial-datasets/)
 and writes an `r:` value into every entry in the PARTS array.
 
-If TMDB_API_KEY is set, it also fetches a poster thumbnail for every title it
-resolved and rewrites the POSTERS block as inline data URIs — IMDb's datasets
-carry no images, so posters come from TMDb, matched on the IMDb id. Without the
-key the ratings pass runs exactly as before and the POSTERS block is left alone.
+If TMDB_API_KEY is set, it also fetches a poster for every title it resolved
+into ./posters/<imdb-id>.jpg and rewrites the POSTERS block with relative paths
+to them — IMDb's datasets carry no images, so posters come from TMDb, matched on
+the IMDb id. Without the key the ratings pass runs exactly as before and the
+POSTERS block is left alone.
 
     python3 update_ratings.py
 
-No third-party packages needed — TMDb's w92 renditions are already thumbnail
-sized, so nothing has to be resized locally. First run downloads ~190 MB and
-takes a few minutes; the files are cached in ./.imdb-cache so later runs are
-quick. Safe to run repeatedly — ratings and posters are replaced, not duplicated.
+The posters directory is part of the site and belongs in the commit. Posters are
+served next to index.html rather than inlined, which keeps the page small and
+lets the browser fetch only what scrolls into view; it also means index.html on
+its own is no longer the whole site.
+
+No third-party packages needed — TMDb serves the size we want, so nothing has to
+be resized locally. First run downloads ~190 MB and takes a few minutes; the
+files are cached in ./.imdb-cache so later runs are quick. Safe to run
+repeatedly — ratings and posters are replaced, not duplicated.
 """
 
-import base64
 import csv
 import gzip
 import io
@@ -122,17 +127,20 @@ def candidates_for(idx, title, year):
 
 TMDB_KEY = os.environ.get("TMDB_API_KEY", "").strip()
 TMDB_FIND = "https://api.themoviedb.org/3/find/{}?external_source=imdb_id&api_key={}"
-TMDB_IMG = "https://image.tmdb.org/t/p/w92{}"
-POSTER_CACHE = os.path.join(CACHE, "posters")
+TMDB_IMG = "https://image.tmdb.org/t/p/w342{}"
+POSTER_DIR = "posters"                                  # shipped with the site
+MISS_CACHE = os.path.join(CACHE, "poster-misses")        # not shipped
 
 
-def poster_bytes(tconst):
-    """w92 JPEG for an IMDb id, or None. Cached on disk, misses included."""
-    os.makedirs(POSTER_CACHE, exist_ok=True)
-    hit = os.path.join(POSTER_CACHE, tconst + ".jpg")
-    miss = os.path.join(POSTER_CACHE, tconst + ".none")
-    if os.path.exists(hit):
-        return open(hit, "rb").read()
+def poster_file(tconst):
+    """Relative path to this title's poster, fetching it if absent, or None."""
+    os.makedirs(POSTER_DIR, exist_ok=True)
+    os.makedirs(MISS_CACHE, exist_ok=True)
+    hit = os.path.join(POSTER_DIR, tconst + ".jpg")
+    miss = os.path.join(MISS_CACHE, tconst + ".none")
+    rel = POSTER_DIR + "/" + tconst + ".jpg"
+    if os.path.exists(hit) and os.path.getsize(hit) > 0:
+        return rel
     if os.path.exists(miss):
         return None
 
@@ -164,27 +172,41 @@ def poster_bytes(tconst):
         return None
     with open(hit, "wb") as fh:
         fh.write(data)
-    return data
+    return rel
+
+
+def prune_posters(resolved):
+    """Drop poster files for titles no longer in the list.
+
+    Driven by what the IMDb matcher resolved, not by what TMDb answered, so a
+    TMDb outage can never delete good posters."""
+    keep = {tconst + ".jpg" for _, _, tconst in resolved}
+    if not os.path.isdir(POSTER_DIR):
+        return
+    for name in os.listdir(POSTER_DIR):
+        if name.endswith(".jpg") and name not in keep:
+            os.remove(os.path.join(POSTER_DIR, name))
+            print(f"    removed stale poster {name}")
 
 
 def write_posters(text, resolved):
-    """Replace the POSTERS block with data URIs for everything we resolved."""
+    """Replace the POSTERS block with paths to everything we resolved."""
     print(f"\nFetching posters for {len(resolved)} titles …", flush=True)
     rows, got, total = [], 0, 0
     for title, year, tconst in resolved:
-        data = poster_bytes(tconst)
-        if not data:
+        rel = poster_file(tconst)
+        if not rel:
             continue
         got += 1
-        total += len(data)
-        uri = "data:image/jpeg;base64," + base64.b64encode(data).decode("ascii")
-        rows.append("  %s: %s," % (json.dumps(f"{title}|{year}"), json.dumps(uri)))
+        total += os.path.getsize(os.path.join(POSTER_DIR, tconst + ".jpg"))
+        rows.append("  %s: %s," % (json.dumps(f"{title}|{year}"), json.dumps(rel)))
 
+    prune_posters(resolved)
     block = "const POSTERS = {\n" + "\n".join(rows) + "\n};"
     new, n = re.subn(r"const POSTERS = \{.*?\};", lambda _: block, text, count=1, flags=re.S)
     if n != 1:
         sys.exit("Could not find the POSTERS block in index.html")
-    print(f"Posters written: {got} of {len(resolved)}   ·   {total / 1024:.0f} KB of image data")
+    print(f"Posters written: {got} of {len(resolved)}   ·   {total / 1024:.0f} KB on disk")
     return new
 
 
